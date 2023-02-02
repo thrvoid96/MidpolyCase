@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
-    public static LevelManager instance;
     public static GameState gamestate;
     [NonSerialized] public LevelAssetCreate levelAsset;
 
@@ -15,32 +15,20 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         gamestate = GameState.BeforeStart;
-        instance = this;
     }
 
     private void Start()
     {
         SetValues();
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Victory();
-        }
-    }
-
-
+    
     //--------------------------------------------------------------------------//
     void SetValues()
     {
         levelAsset = Resources.Load<LevelAssetCreate>("Scriptables/LevelAsset");
-        CreateGoldParticleHolder();
         CreateLevel();
     }
-
-
+    
     //-------------------------------------------------------------------//
     void CreateLevel()
     {
@@ -67,40 +55,28 @@ public class LevelManager : MonoBehaviour
        
     }
 
-    //-------------------------------------------------------------------//
-    void CreateGoldParticleHolder()
+    public void RestartSceneWithDelay(float delay)
     {
-        //particlePool = new GameObject("Particle Pool");
+        StartCoroutine(SceneResetDelay(delay));
+    }
 
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    GameObject createdParticleForPool = Instantiate(levelAsset.goldSplashParticle, particlePool.transform);
-        //    createdParticleForPool.name = "Created Gold Particle_" + i;
-        //    createdParticleForPool.SetActive(false);
-        //}
-
+    private IEnumerator SceneResetDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     //-------------------------------------------------------------------//
-
-    //-------------------------------------------------------------------//
-    public void Victory(float delay = 0.9f)
+    public void Victory()
     {
-        VictoryPanel.instance.VictoryCase(delay);
+        gamestate = GameState.Victory;
+        VictoryPanel.Instance.VictoryCase();
     }
 
     //-------------------------------------------------------------------//
     public void Fail()
     {
-        Debug.Log("FAILED");
         gamestate = GameState.Failed;
-        LosePanel.instance.LoseCase();
-    }
-
-    //----------------------------------------------------------------------------------------//
-    public int FindTotalScore()
-    {
-        int totalScore = GameManager.Level * 10 + 50;
-        return totalScore;
+        LosePanel.Instance.LoseCase();
     }
 }

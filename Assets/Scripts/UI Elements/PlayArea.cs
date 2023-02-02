@@ -14,8 +14,6 @@ public class PlayArea : MonoBehaviour
     public void GameStart()
     {
         LevelManager.gamestate = GameState.Normal;
-        UpperPanel.instance.gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        UpperPanel.instance.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 }

@@ -1,17 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-public class InputPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler, IBeginDragHandler
+public class InputPanel : Singleton<InputPanel>, IPointerDownHandler, IPointerUpHandler, IDragHandler, IBeginDragHandler
 {
-    public static InputPanel instance;
-    [System.NonSerialized] public GameObject tutorial;
     [System.NonSerialized] public float horizontal;
     Vector2 _lastPosition = Vector2.zero;
     public static float valX;
-    private void Awake()
-    {
-        instance = this;
-        //tutorial = transform.GetChild(0).gameObject;
-    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if (LevelManager.gamestate == GameState.BeforeStart)

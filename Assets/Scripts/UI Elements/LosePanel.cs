@@ -5,26 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
-public class LosePanel : MonoBehaviour
+public class LosePanel : Singleton<LosePanel>
 {
-    public static LosePanel instance;
-
-    Button button;
-
-    private void Awake()
-    {
-        instance = this;
-        button = transform.GetChild(2).GetComponent<Button>();
-    }
+    [SerializeField] private Button retryButton;
+    
     public void CompleteButtonsHandle()
     {
-
-        StartCoroutine(DelayForBuild2());
-        button.interactable = false;
-        
+        retryButton.interactable = false;
+        LevelManager.Instance.RestartSceneWithDelay(1f);
     }
-
-
+    
     public void LoseCase()
     {
         StartCoroutine(LoseCaseDelay());
@@ -32,20 +22,10 @@ public class LosePanel : MonoBehaviour
         IEnumerator LoseCaseDelay()
         {
             yield return new WaitForSeconds(1f);
-            InputPanel.instance.gameObject.SetActive(false);
+            InputPanel.Instance.gameObject.SetActive(false);
             transform.GetChild(0).gameObject.SetActive(true);
-            transform.GetChild(1).gameObject.SetActive(true);
-            transform.GetChild(2).gameObject.SetActive(true);
             AudioManager.Play(AudioClipName.Failed);
         }
     }
-
-    IEnumerator DelayForBuild2()
-    {
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-
-
+    
 }
