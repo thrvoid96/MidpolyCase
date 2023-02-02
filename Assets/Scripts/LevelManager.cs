@@ -6,15 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    public static GameState gamestate;
     [NonSerialized] public LevelAssetCreate levelAsset;
 
     GameObject particlePool;
+    
+    public Action gameStart,gameWon,gameLost;
 
 
     private void Awake()
     {
-        gamestate = GameState.BeforeStart;
+        gameWon += Victory;
+        gameLost += Fail;
     }
 
     private void Start()
@@ -67,16 +69,14 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     //-------------------------------------------------------------------//
-    public void Victory()
+    private void Victory()
     {
-        gamestate = GameState.Victory;
         VictoryPanel.Instance.VictoryCase();
     }
 
     //-------------------------------------------------------------------//
-    public void Fail()
+    private void Fail()
     {
-        gamestate = GameState.Failed;
         LosePanel.Instance.LoseCase();
     }
 }

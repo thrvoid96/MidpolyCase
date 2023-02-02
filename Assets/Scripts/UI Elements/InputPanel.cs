@@ -8,25 +8,14 @@ public class InputPanel : Singleton<InputPanel>, IPointerDownHandler, IPointerUp
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (LevelManager.gamestate == GameState.BeforeStart)
-        {
-            _lastPosition = eventData.position;
-            PlayArea.instance.GameStart();
-        }
-        else if(LevelManager.gamestate == GameState.Normal)
-        {
-            _lastPosition = eventData.position;
-        }
+        _lastPosition = eventData.position;
     }
     public void OnDrag(PointerEventData eventData)
     {
-        if (LevelManager.gamestate == GameState.Normal)
-        {
-            Vector2 direction = eventData.position - _lastPosition;
-            horizontal = direction.x * 2 / Screen.width;
-            valX = Mathf.Lerp(valX, horizontal, 0.4f);
-            _lastPosition = eventData.position;
-        }
+        Vector2 direction = eventData.position - _lastPosition;
+        horizontal = direction.x * 2 / Screen.width;
+        valX = Mathf.Lerp(valX, horizontal, 0.4f);
+        _lastPosition = eventData.position;
     }
     public void OnPointerUp(PointerEventData eventData)
     {
@@ -35,9 +24,6 @@ public class InputPanel : Singleton<InputPanel>, IPointerDownHandler, IPointerUp
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (LevelManager.gamestate == GameState.Normal)
-        {
-            _lastPosition = eventData.position;
-        }
+        _lastPosition = eventData.position;
     }
 }

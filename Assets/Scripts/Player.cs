@@ -20,9 +20,11 @@ public class Player : MonoBehaviour
     private Transform parentObj;
     private Transform[] moneyArray;
 
-    private float input = 0f;
+    private float input;
     TransformAccessArray accessArray;
     private static NativeArray<Keyframe> xCurveKeys,curve1Keys,curve2Keys;
+
+    private int currentCashCount;
     
     private struct UpdateJob : IJobParallelForTransform
     {
@@ -36,8 +38,50 @@ public class Player : MonoBehaviour
         }
     }
     
+    private void OnDestroy()
+    {
+        accessArray.Dispose();
+        curve1Keys.Dispose();
+        curve2Keys.Dispose();
+    }  
+
+    private void StartRun()
+    {
+        StartCoroutine(nameof(RunLoop));
+    }
+
+    private IEnumerator RunLoop()
+    {
+        while (true)
+        {
+            var localPosition = transform.localPosition;
+            tempPos = localPosition;
+            tempPos.x = Mathf.Clamp(tempPos.x + InputPanel.valX * sidewaysSpeed * 10, -maxXDistance, maxXDistance);
+            localPosition = Vector3.Lerp(localPosition, tempPos, 0.8f);
+            transform.localPosition = localPosition;
+            InputPanel.valX = Mathf.Lerp(InputPanel.valX, 0, 0.05f);
+            parentObj.Translate(new Vector3(0, 0, 1) * Time.deltaTime * forwardSpeed);
+
+            input = localPosition.x / maxXDistance;
+
+            var job = new UpdateJob
+            {
+                ArrayLength = moneyArray.Length,
+                InputFactor = input
+            };
+            
+            JobHandle jobHandle = job.Schedule(accessArray);
+            
+            jobHandle.Complete();
+            
+            yield return null;
+        }
+    }
+
     private void Awake()
     {
+        LevelManager.Instance.gameStart += StartRun;
+        
         parentObj = transform.parent;
 
         moneyArray = new Transform[moneyHolderParent.childCount];
@@ -83,44 +127,29 @@ public class Player : MonoBehaviour
         xCurveKeys = new NativeArray<Keyframe>(newKeyFrames3, Allocator.Persistent);
     }
     
-    private void OnDestroy()
-    {
-        accessArray.Dispose();
-        curve1Keys.Dispose();
-        curve2Keys.Dispose();
-    }    
+  
     
-    private void Update()
-    {
-        if (LevelManager.gamestate == GameState.Normal)
-        {
-            var localPosition = transform.localPosition;
-            tempPos = localPosition;
-            tempPos.x = Mathf.Clamp(tempPos.x + InputPanel.valX * sidewaysSpeed * 10, -maxXDistance, maxXDistance);
-            localPosition = Vector3.Lerp(localPosition, tempPos, 0.8f);
-            transform.localPosition = localPosition;
-            InputPanel.valX = Mathf.Lerp(InputPanel.valX, 0, 0.05f);
-            parentObj.Translate(new Vector3(0, 0, 1) * Time.deltaTime * forwardSpeed);
-
-            input = localPosition.x / maxXDistance;
-
-            var job = new UpdateJob
-            {
-                ArrayLength = moneyArray.Length,
-                InputFactor = input
-            };
-            
-            JobHandle jobHandle = job.Schedule(accessArray);
-            
-            jobHandle.Complete();
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("FinishLine"))
+        if (other.TryGetComponent<ICollectable>(out var collectable))
         {
-            LevelManager.Instance.Victory();
+            collectable.Collect();
+            var collectableTrans = collectable.GetTransform();
+            var startIndex = currentCashCount;
+            
+            moneyArray[startIndex].gameObject.SetActive(true);
+            moneyArray[startIndex].GetChild(0).gameObject.SetActive(false);
+            
+            collectableTrans.SetParent(moneyArray[currentCashCount]);
+            collectableTrans.localRotation = Quaternion.Euler(Vector3.zero);
+            collectableTrans.DOLocalMove(Vector3.zero, 0.5f).OnComplete(() =>
+            {
+                collectableTrans.SetParent(null);
+                collectableTrans.gameObject.SetActive(false);
+                moneyArray[startIndex].GetChild(0).gameObject.SetActive(true);
+            });
+            
+            currentCashCount++;
         }
     }
     
