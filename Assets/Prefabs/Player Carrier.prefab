@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4081192444530083018
 Transform:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &610828201339301707
 Transform:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &43911412769152883
 Transform:
   m_ObjectHideFlags: 0
@@ -490,7 +490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2756256717582736220
 Transform:
   m_ObjectHideFlags: 0
@@ -845,7 +845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8080561244423886129
 Transform:
   m_ObjectHideFlags: 0
@@ -940,7 +940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9141502255534055636
 Transform:
   m_ObjectHideFlags: 0
@@ -972,7 +972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1300294529275663680
 Transform:
   m_ObjectHideFlags: 0
@@ -1170,7 +1170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4175362143868841477
 Transform:
   m_ObjectHideFlags: 0
@@ -1438,7 +1438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1493228107225156429
 Transform:
   m_ObjectHideFlags: 0
@@ -1470,7 +1470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6094492513109641278
 Transform:
   m_ObjectHideFlags: 0
@@ -1566,7 +1566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4160063344496162860
 Transform:
   m_ObjectHideFlags: 0
@@ -1846,7 +1846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7364568385826786234
 Transform:
   m_ObjectHideFlags: 0
@@ -1878,7 +1878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3577046599349941211
 Transform:
   m_ObjectHideFlags: 0
@@ -2042,7 +2042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1535149706162539856
 Transform:
   m_ObjectHideFlags: 0
@@ -2270,7 +2270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2046363207790753170
 Transform:
   m_ObjectHideFlags: 0
@@ -2365,7 +2365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4103615848074017590
 Transform:
   m_ObjectHideFlags: 0
@@ -2491,7 +2491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8594195495775475971
 Transform:
   m_ObjectHideFlags: 0
@@ -2523,7 +2523,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3435174852172351965
 Transform:
   m_ObjectHideFlags: 0
@@ -2714,7 +2714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3106077114853879152
 Transform:
   m_ObjectHideFlags: 0
@@ -2746,7 +2746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2809596818874723585
 Transform:
   m_ObjectHideFlags: 0
@@ -2977,8 +2977,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &5910565567971137359 stripped
 Transform:
@@ -3040,8 +3039,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &5942590952814478141 stripped
 Transform:
@@ -3103,8 +3101,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &6057040997832265625 stripped
 Transform:
@@ -3166,8 +3163,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &6908784026655493578 stripped
 Transform:
@@ -3229,8 +3225,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &4630770690471878427 stripped
 Transform:
@@ -3292,8 +3287,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &8265194657902928048 stripped
 Transform:
@@ -3421,8 +3415,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &8884865107133262727 stripped
 Transform:
@@ -3484,8 +3477,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &8762453887067182682 stripped
 Transform:
@@ -3617,8 +3609,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &7703104243961939628 stripped
 Transform:
@@ -3799,8 +3790,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &8064166677879555478 stripped
 Transform:
@@ -3862,8 +3852,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &7817434760464578385 stripped
 Transform:
@@ -3925,8 +3914,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &1886764061281342348 stripped
 Transform:
@@ -3988,8 +3976,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &70541640278575216 stripped
 Transform:
@@ -4051,8 +4038,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &453306172342570317 stripped
 Transform:
@@ -4114,8 +4100,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &488701163711536684 stripped
 Transform:
@@ -4177,8 +4162,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &652530163339283371 stripped
 Transform:
@@ -4240,8 +4224,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &615901943213310280 stripped
 Transform:
@@ -4303,8 +4286,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &3619985325521258417 stripped
 Transform:
@@ -4366,8 +4348,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &3502667967600857780 stripped
 Transform:
@@ -4429,8 +4410,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: PileOfCash
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7017183153372506064, guid: b3ed7d509613d96439d1560280175634, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &2859431705960023765 stripped
 Transform:

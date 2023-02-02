@@ -135,18 +135,18 @@ public class Player : MonoBehaviour
         {
             collectable.Collect();
             var collectableTrans = collectable.GetTransform();
-            var startIndex = currentCashCount;
+            var startIndex = currentCashCount % moneyArray.Length;
+            var childIndex = currentCashCount / moneyArray.Length;
             
-            moneyArray[startIndex].gameObject.SetActive(true);
-            moneyArray[startIndex].GetChild(0).gameObject.SetActive(false);
-            
-            collectableTrans.SetParent(moneyArray[currentCashCount]);
+            collectableTrans.SetParent(moneyArray[startIndex]);
             collectableTrans.localRotation = Quaternion.Euler(Vector3.zero);
             collectableTrans.DOLocalMove(Vector3.zero, 0.5f).OnComplete(() =>
             {
                 collectableTrans.SetParent(null);
                 collectableTrans.gameObject.SetActive(false);
-                moneyArray[startIndex].GetChild(0).gameObject.SetActive(true);
+                
+                moneyArray[startIndex].GetChild(0).GetChild(0).GetChild(Mathf.Clamp(childIndex - 1,0,1000)).gameObject.SetActive(false);
+                moneyArray[startIndex].GetChild(0).GetChild(0).GetChild(childIndex).gameObject.SetActive(true);
             });
             
             currentCashCount++;
