@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxXDistance = 5f;
     [SerializeField] private Transform moneyHolderParent;
     [SerializeField] private AnimationCurve xCurve, yCurveEnd, yCurveStart;
+    [SerializeField] private Animator animator;
 
     private Vector3 tempPos;
     private Transform parentObj;
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
 
     private void StartRun()
     {
+        animator.SetTrigger(AnimatorHashes.DoRun);
         StartCoroutine(nameof(RunLoop));
     }
 
@@ -137,6 +139,8 @@ public class Player : MonoBehaviour
             var collectableTrans = collectable.GetTransform();
             var startIndex = currentCashCount % moneyArray.Length;
             var childIndex = currentCashCount / moneyArray.Length;
+            
+            moneyArray[startIndex].gameObject.SetActive(true);
             
             collectableTrans.SetParent(moneyArray[startIndex]);
             collectableTrans.localRotation = Quaternion.Euler(Vector3.zero);
