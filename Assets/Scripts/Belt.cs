@@ -17,7 +17,9 @@ public class Belt : MonoBehaviour
     private List<GameObject> moneyObjects = new();
     private int currentIndex;
     private int betAmount;
-    
+
+    public List<GameObject> getMoneyObjects => moneyObjects;
+
     private void Awake()
     {
         triangle.material = defaultMat;

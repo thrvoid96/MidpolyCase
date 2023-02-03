@@ -14,7 +14,6 @@ public class BetArea : MonoBehaviour
     [field: SerializeField] public int Multiplier { get; private set; }
     [SerializeField] private string questionToAsk, leftBeltAnswer, rightBeltAnswer;
     [SerializeField] private BeltType correctBelt;
-
     
 
 #if UNITY_EDITOR
@@ -50,12 +49,24 @@ public class BetArea : MonoBehaviour
 
     private void GiveReward()
     {
-        var totalBetOnCorrect = belts[(int) correctBelt].GetCurrentBetAmount();
+        var beltToCheck = belts[(int) correctBelt];
+        var totalBetOnCorrect = beltToCheck.GetCurrentBetAmount();
         
         if (totalBetOnCorrect <= 0)
         {
             // Do bad ui, no rewards
             return;
+        }
+
+        var moneyList = beltToCheck.getMoneyObjects;
+
+        for (int i = 0; i < totalBetOnCorrect * Multiplier; i++)
+        {
+            var spawnedObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney,
+                moneyList[i % moneyList.Count].transform.position,
+                Quaternion.identity, null).GetComponent<ICollectable>();
+            
+            Player.Instance.CollectMoney(spawnedObj,false);
         }
     }
 }

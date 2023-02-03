@@ -8,7 +8,7 @@ using Unity.Jobs;
 using UnityEngine.Jobs;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
     [SerializeField] private float forwardSpeed = 10;
     [SerializeField] private float sidewaysSpeed = 1.2f;
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     TransformAccessArray accessArray;
     private static NativeArray<Keyframe> xCurveKeys,curve1Keys,curve2Keys;
 
-    private int currentCashCount;
+    [SerializeField] private int currentCashCount;
     private Tween moneyPutTween;
     
     private struct UpdateJob : IJobParallelForTransform
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
         xCurveKeys = new NativeArray<Keyframe>(newKeyFrames3, Allocator.Persistent);
     }
 
-    private void CollectMoney(ICollectable collectable)
+    public void CollectMoney(ICollectable collectable, bool doScaleEffect)
     {
         if (currentCashCount == moneyArray.Length)
         {
@@ -149,9 +149,19 @@ public class Player : MonoBehaviour
         var startIndex = currentCashCount;
 
         moneyArray[startIndex].gameObject.SetActive(true);
-            
+        
         collectableTrans.SetParent(moneyArray[startIndex]);
         collectableTrans.localRotation = Quaternion.Euler(Vector3.zero);
+
+        if (doScaleEffect)
+        {
+            collectableTrans.localScale = Vector3.one * 0.5f;
+        }
+        else
+        {
+            collectableTrans.localScale = Vector3.one * 0.45f;
+        }
+        
         collectableTrans.DOLocalMove(Vector3.zero, 0.5f).OnComplete(() =>
         {
             collectableTrans.SetParent(null);
@@ -165,12 +175,13 @@ public class Player : MonoBehaviour
 
     private void PutMoneyOnBelt(Belt beltToPut)
     {
-        if (currentCashCount < 0)
+        if (currentCashCount - 1 < 0)
         {
             moneyPutTween.Kill();
             return;
         }
         
+        currentCashCount -= 1;
         var startIndex = currentCashCount;
         moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(false);
         moneyArray[startIndex].gameObject.SetActive(false);
@@ -179,7 +190,7 @@ public class Player : MonoBehaviour
         
         newObj.transform.localScale = Vector3.one;
         newObj.transform.DOLocalRotate(Vector3.zero, 0.25f);
-        newObj.transform.DOLocalMove(new Vector3(0f, 1f, newObj.transform.localPosition.z), 0.25f).OnComplete(() =>
+        newObj.transform.DOLocalMove(new Vector3(0f, 0.5f, newObj.transform.localPosition.z), 0.25f).OnComplete(() =>
         {
             var distance = Vector3.Distance(beltToPut.moneyEnterance.transform.position, newObj.transform.position);
             newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance * 0.05f).OnComplete(() =>
@@ -188,7 +199,7 @@ public class Player : MonoBehaviour
             }).SetEase(Ease.Linear);
         });
 
-        currentCashCount -= 1;
+        
     }
 
     private void RecalculateMoney()
@@ -200,7 +211,7 @@ public class Player : MonoBehaviour
     {
         if (other.TryGetComponent<ICollectable>(out var collectable))
         {
-            CollectMoney(collectable);
+            CollectMoney(collectable,true);
         }
         else if(other.TryGetComponent<BetArea>(out var betArea))
         {
