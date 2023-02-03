@@ -137,11 +137,16 @@ public class Player : MonoBehaviour
 
     private void CollectMoney(ICollectable collectable)
     {
+        if (currentCashCount == moneyArray.Length)
+        {
+            Debug.Log("Max money reached");
+            return;
+        }
+        
         collectable.Collect();
         var collectableTrans = collectable.GetTransform();
-        var startIndex = currentCashCount % moneyArray.Length;
-        var childIndex = currentCashCount / moneyArray.Length;
-            
+        var startIndex = currentCashCount;
+
         moneyArray[startIndex].gameObject.SetActive(true);
             
         collectableTrans.SetParent(moneyArray[startIndex]);
@@ -151,9 +156,9 @@ public class Player : MonoBehaviour
             collectableTrans.SetParent(null);
             collectableTrans.gameObject.SetActive(false);
                 
-            moneyCollectables[startIndex].ChangeType((MoneyType)Mathf.Clamp(childIndex - 1,0,1000));
+            moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(true);
         });
-            
+
         currentCashCount++;
     }
 
@@ -161,7 +166,8 @@ public class Player : MonoBehaviour
     {
         if (currentCashCount >= 0)
         {
-            var startIndex = (currentCashCount - 1) % moneyArray.Length;
+            var startIndex = currentCashCount;
+            moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(false);
             moneyArray[startIndex].gameObject.SetActive(false);
         
             var newObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney, moneyArray[startIndex].position, Quaternion.identity, beltToPut.transform);
@@ -170,11 +176,11 @@ public class Player : MonoBehaviour
                 var distance = Vector3.Distance(beltToPut.moneyEnterance.transform.position, newObj.transform.position);
                 newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance).OnComplete(() =>
                 {
-
+                    beltToPut.AddBetOnBelt(1);
                 });
             });
-            
-            currentCashCount -= (int)moneyCollectables[startIndex].GetType();
+
+            currentCashCount -= 1;
         }
     }
 

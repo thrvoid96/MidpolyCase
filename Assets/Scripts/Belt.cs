@@ -17,6 +17,16 @@ public class Belt : MonoBehaviour
     private List<GameObject> moneyObjects = new();
     private int currentIndex;
     private int betAmount;
+    
+    private void Awake()
+    {
+        triangle.material = defaultMat;
+        
+        foreach (Transform child in beltCashParent)
+        {
+            moneyObjects.Add(child.gameObject);
+        }
+    }
 
     public void SetText(string text)
     {
@@ -36,23 +46,18 @@ public class Belt : MonoBehaviour
 
     public void AddBetOnBelt(int amount)
     {
-        moneyObjects[currentIndex].SetActive(true);
         betAmount += amount;
+        if (currentIndex == moneyObjects.Count)
+        {
+            Debug.LogError("Belt capacity reached");
+            return;
+        }
+        moneyObjects[currentIndex].SetActive(true);
         currentIndex++;
     }
 
     public int GetCurrentBetAmount()
     {
         return betAmount;
-    }
-
-    private void Awake()
-    {
-        triangle.material = defaultMat;
-        
-        foreach (Transform child in beltCashParent)
-        {
-            moneyObjects.Add(child.gameObject);
-        }
     }
 }
