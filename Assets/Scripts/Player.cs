@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private static NativeArray<Keyframe> xCurveKeys,curve1Keys,curve2Keys;
 
     private int currentCashCount;
+    private Tween moneyPutTween;
     
     private struct UpdateJob : IJobParallelForTransform
     {
@@ -164,24 +165,30 @@ public class Player : MonoBehaviour
 
     private void PutMoneyOnBelt(Belt beltToPut)
     {
-        if (currentCashCount >= 0)
+        if (currentCashCount < 0)
         {
-            var startIndex = currentCashCount;
-            moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(false);
-            moneyArray[startIndex].gameObject.SetActive(false);
-        
-            var newObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney, moneyArray[startIndex].position, Quaternion.identity, beltToPut.transform);
-            newObj.transform.DOLocalMove(new Vector3(0f, 1f, newObj.transform.localPosition.z), 0.2f).OnComplete(() =>
-            {
-                var distance = Vector3.Distance(beltToPut.moneyEnterance.transform.position, newObj.transform.position);
-                newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance).OnComplete(() =>
-                {
-                    beltToPut.AddBetOnBelt(1);
-                });
-            });
-
-            currentCashCount -= 1;
+            moneyPutTween.Kill();
+            return;
         }
+        
+        var startIndex = currentCashCount;
+        moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(false);
+        moneyArray[startIndex].gameObject.SetActive(false);
+        
+        var newObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney, moneyArray[startIndex].position, moneyArray[startIndex].rotation, beltToPut.transform);
+        
+        newObj.transform.localScale = Vector3.one;
+        newObj.transform.DOLocalRotate(Vector3.zero, 0.25f);
+        newObj.transform.DOLocalMove(new Vector3(0f, 1f, newObj.transform.localPosition.z), 0.25f).OnComplete(() =>
+        {
+            var distance = Vector3.Distance(beltToPut.moneyEnterance.transform.position, newObj.transform.position);
+            newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance * 0.05f).OnComplete(() =>
+            {
+                beltToPut.AddBetOnBelt(1);
+            }).SetEase(Ease.Linear);
+        });
+
+        currentCashCount -= 1;
     }
 
     private void RecalculateMoney()
@@ -195,7 +202,7 @@ public class Player : MonoBehaviour
         {
             CollectMoney(collectable);
         }
-        else if (other.TryGetComponent<BetArea>(out var betArea))
+        else if(other.TryGetComponent<BetArea>(out var betArea))
         {
             betArea.EnterArea();
             
@@ -205,7 +212,12 @@ public class Player : MonoBehaviour
                 maxXDistance = randomVal;
             });
         }
+        else if (other.TryGetComponent<Belt>(out var belt))
+        {
+            moneyPutTween = DOVirtual.DelayedCall(0.1f, delegate { PutMoneyOnBelt(belt); }).SetLoops(-1,LoopType.Restart);
+        }
     }
+    
 
     private void OnTriggerExit(Collider other)
     {
@@ -218,6 +230,10 @@ public class Player : MonoBehaviour
             {
                 maxXDistance = randomVal;
             });
+        }
+        else if (other.TryGetComponent<Belt>(out var belt))
+        {
+            moneyPutTween.Kill();
         }
     }
 }

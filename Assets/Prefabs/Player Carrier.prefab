@@ -2957,6 +2957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &5910565567971137359 stripped
@@ -3018,6 +3022,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3081,6 +3089,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &6057040997832265625 stripped
@@ -3142,6 +3154,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3205,6 +3221,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &4630770690471878427 stripped
@@ -3266,6 +3286,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3395,6 +3419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &8884865107133262727 stripped
@@ -3456,6 +3484,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3588,6 +3620,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3770,6 +3806,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &8064166677879555478 stripped
@@ -3831,6 +3871,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3894,6 +3938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &1886764061281342348 stripped
@@ -3955,6 +4003,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4018,6 +4070,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &453306172342570317 stripped
@@ -4079,6 +4135,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4142,6 +4202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &652530163339283371 stripped
@@ -4203,6 +4267,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4266,6 +4334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &3619985325521258417 stripped
@@ -4328,6 +4400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StackMoney
       objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
 --- !u!4 &3502667967600857780 stripped
@@ -4389,6 +4465,10 @@ PrefabInstance:
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
       value: StackMoney
+      objectReference: {fileID: 0}
+    - target: {fileID: 8941521286970762159, guid: b3ed7d509613d96439d1560280175634, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}

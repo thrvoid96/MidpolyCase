@@ -114,6 +114,74 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3199530947012173431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3868982404434010109}
+  - component: {fileID: 4426886323151276835}
+  - component: {fileID: 4621201434828636733}
+  m_Layer: 0
+  m_Name: BeltRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3868982404434010109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199530947012173431}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.25, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4293306340677727030}
+  m_Father: {fileID: 4293306341321108215}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4426886323151276835
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199530947012173431}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 3, z: 40}
+  m_Center: {x: 0, y: 0, z: -4.5}
+--- !u!114 &4621201434828636733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199530947012173431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1311bb732e434b4fb9ec1aa50d2cb06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beltText: {fileID: 4293306341750308343}
+  rightMat: {fileID: 2100000, guid: 9765db661a7c548fb8c7fb9d8ac3b5ac, type: 2}
+  wrongMat: {fileID: 2100000, guid: 73e79faf0554a429bbe94be5526853c8, type: 2}
+  defaultMat: {fileID: 2100000, guid: e9b807d349ca04713992370d9756992b, type: 2}
+  triangle: {fileID: 3194590349490503075}
+  beltCashParent: {fileID: 4293306340758366838}
+  <QuestionObject>k__BackingField: {fileID: 4293306339970053237}
+  moneyEnterance: {fileID: 4234603762947806365}
+  beltType: 1
 --- !u!1 &3925767199116630739
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,10 +861,8 @@ GameObject:
   - component: {fileID: 4293306340677727019}
   - component: {fileID: 4293306340677727028}
   - component: {fileID: 4293306340677727029}
-  - component: {fileID: 1233721496382303485}
-  - component: {fileID: 4067037128941322960}
   m_Layer: 0
-  m_Name: Belt_Right
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,16 +876,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4293306340677727031}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 4.2, y: 0, z: -0.25}
-  m_LocalScale: {x: 50.000023, y: 1.1999999, z: 3}
+  m_LocalPosition: {x: 0, y: -1, z: -0.25}
+  m_LocalScale: {x: 50.000034, y: 1.1999999, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4293306340758366838}
   - {fileID: 7291639167375521984}
   - {fileID: 4331999001778472652}
   - {fileID: 4234603762947806365}
-  m_Father: {fileID: 4293306341321108215}
-  m_RootOrder: 5
+  m_Father: {fileID: 3868982404434010109}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &4293306340677727019
 MeshFilter:
@@ -891,40 +957,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &1233721496382303485
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4293306340677727031}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0000002, y: 3, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4067037128941322960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4293306340677727031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1311bb732e434b4fb9ec1aa50d2cb06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beltText: {fileID: 4293306341750308343}
-  rightMat: {fileID: 2100000, guid: 9765db661a7c548fb8c7fb9d8ac3b5ac, type: 2}
-  wrongMat: {fileID: 2100000, guid: 73e79faf0554a429bbe94be5526853c8, type: 2}
-  defaultMat: {fileID: 2100000, guid: e9b807d349ca04713992370d9756992b, type: 2}
-  triangle: {fileID: 3194590349490503075}
-  beltCashParent: {fileID: 4293306340758366838}
-  <QuestionObject>k__BackingField: {fileID: 4293306339970053237}
-  moneyEnterance: {fileID: 4234603762947806365}
-  beltType: 1
 --- !u!1 &4293306340758366839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,8 +1722,8 @@ Transform:
   - {fileID: 5112269594195609380}
   - {fileID: 5170578606854005274}
   - {fileID: 4293306341927240366}
-  - {fileID: 4293306341349247067}
-  - {fileID: 4293306340677727030}
+  - {fileID: 3385789553855046557}
+  - {fileID: 3868982404434010109}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1723,8 +1755,8 @@ MonoBehaviour:
   multiplierText: {fileID: 4293306341074315916}
   questionMoveSpeed: 0.22
   belts:
-  - {fileID: 2603299835550104093}
-  - {fileID: 4067037128941322960}
+  - {fileID: 7241890636830991999}
+  - {fileID: 4621201434828636733}
   <Multiplier>k__BackingField: 0
   questionToAsk: 
   leftBeltAnswer: 
@@ -1742,10 +1774,8 @@ GameObject:
   - component: {fileID: 4293306341349247064}
   - component: {fileID: 4293306341349247065}
   - component: {fileID: 4293306341349247066}
-  - component: {fileID: 950449025332259788}
-  - component: {fileID: 2603299835550104093}
   m_Layer: 0
-  m_Name: Belt_Left
+  m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1759,16 +1789,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4293306341349247076}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -4.2, y: 0, z: -0.25}
-  m_LocalScale: {x: 50.000023, y: 1.1999999, z: 3}
+  m_LocalPosition: {x: 0, y: -1, z: -0.25}
+  m_LocalScale: {x: 50.00005, y: 1.1999999, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4293306340828064444}
   - {fileID: 4293306341378910040}
   - {fileID: 4331999000405773215}
   - {fileID: 7060565033041488307}
-  m_Father: {fileID: 4293306341321108215}
-  m_RootOrder: 4
+  m_Father: {fileID: 3385789553855046557}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &4293306341349247064
 MeshFilter:
@@ -1840,40 +1870,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &950449025332259788
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4293306341349247076}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0000002, y: 3, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2603299835550104093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4293306341349247076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1311bb732e434b4fb9ec1aa50d2cb06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beltText: {fileID: 4293306340028368101}
-  rightMat: {fileID: 2100000, guid: 9765db661a7c548fb8c7fb9d8ac3b5ac, type: 2}
-  wrongMat: {fileID: 2100000, guid: 73e79faf0554a429bbe94be5526853c8, type: 2}
-  defaultMat: {fileID: 2100000, guid: e9b807d349ca04713992370d9756992b, type: 2}
-  triangle: {fileID: 3194590349328085232}
-  beltCashParent: {fileID: 4293306340828064444}
-  <QuestionObject>k__BackingField: {fileID: 4293306341040966236}
-  moneyEnterance: {fileID: 7060565033041488307}
-  beltType: 0
 --- !u!1 &4293306341378910041
 GameObject:
   m_ObjectHideFlags: 0
@@ -26426,6 +26422,74 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &7064663374505816336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3385789553855046557}
+  - component: {fileID: 7798088235393880584}
+  - component: {fileID: 7241890636830991999}
+  m_Layer: 0
+  m_Name: BeltLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3385789553855046557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7064663374505816336}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.25, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4293306341349247067}
+  m_Father: {fileID: 4293306341321108215}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7798088235393880584
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7064663374505816336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 3, z: 40}
+  m_Center: {x: 0, y: 0, z: -4.5}
+--- !u!114 &7241890636830991999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7064663374505816336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1311bb732e434b4fb9ec1aa50d2cb06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beltText: {fileID: 4293306340028368101}
+  rightMat: {fileID: 2100000, guid: 9765db661a7c548fb8c7fb9d8ac3b5ac, type: 2}
+  wrongMat: {fileID: 2100000, guid: 73e79faf0554a429bbe94be5526853c8, type: 2}
+  defaultMat: {fileID: 2100000, guid: e9b807d349ca04713992370d9756992b, type: 2}
+  triangle: {fileID: 3194590349328085232}
+  beltCashParent: {fileID: 4293306340828064444}
+  <QuestionObject>k__BackingField: {fileID: 4293306341040966236}
+  moneyEnterance: {fileID: 7060565033041488307}
+  beltType: 0
 --- !u!1 &7839106280468532854
 GameObject:
   m_ObjectHideFlags: 0
