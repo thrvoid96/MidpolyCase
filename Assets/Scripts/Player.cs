@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private Vector3 tempPos;
     private Transform parentObj;
     private Transform[] moneyArray;
+    private ICollectable[] moneyCollectables;
 
     private float input, savedMaxXDistance;
     TransformAccessArray accessArray;
@@ -86,13 +87,18 @@ public class Player : MonoBehaviour
         savedMaxXDistance = maxXDistance;
         parentObj = transform.parent;
 
-        moneyArray = new Transform[moneyHolderParent.childCount];
+        var childCount = moneyHolderParent.childCount;
 
-        for (int i = 0; i < moneyHolderParent.childCount; i++)
+        moneyArray = new Transform[childCount];
+        moneyCollectables = new ICollectable[childCount];
+
+        for (int i = 0; i < childCount; i++)
         {
-            moneyArray[i] = moneyHolderParent.GetChild(i);
+            var child = moneyHolderParent.GetChild(i);
+            moneyArray[i] = child;
+            moneyCollectables[i] = child.GetChild(0).GetComponent<ICollectable>();
         }
-        
+
         accessArray = new TransformAccessArray(moneyArray);
         
         var newKeyFrames = new Keyframe[moneyArray.Length];
@@ -129,29 +135,59 @@ public class Player : MonoBehaviour
         xCurveKeys = new NativeArray<Keyframe>(newKeyFrames3, Allocator.Persistent);
     }
 
+    private void CollectMoney(ICollectable collectable)
+    {
+        collectable.Collect();
+        var collectableTrans = collectable.GetTransform();
+        var startIndex = currentCashCount % moneyArray.Length;
+        var childIndex = currentCashCount / moneyArray.Length;
+            
+        moneyArray[startIndex].gameObject.SetActive(true);
+            
+        collectableTrans.SetParent(moneyArray[startIndex]);
+        collectableTrans.localRotation = Quaternion.Euler(Vector3.zero);
+        collectableTrans.DOLocalMove(Vector3.zero, 0.5f).OnComplete(() =>
+        {
+            collectableTrans.SetParent(null);
+            collectableTrans.gameObject.SetActive(false);
+                
+            moneyCollectables[startIndex].ChangeType((MoneyType)Mathf.Clamp(childIndex - 1,0,1000));
+        });
+            
+        currentCashCount++;
+    }
+
+    private void PutMoneyOnBelt(Belt beltToPut)
+    {
+        if (currentCashCount >= 0)
+        {
+            var startIndex = (currentCashCount - 1) % moneyArray.Length;
+            moneyArray[startIndex].gameObject.SetActive(false);
+        
+            var newObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney, moneyArray[startIndex].position, Quaternion.identity, beltToPut.transform);
+            newObj.transform.DOLocalMove(new Vector3(0f, 1f, newObj.transform.localPosition.z), 0.2f).OnComplete(() =>
+            {
+                var distance = Vector3.Distance(beltToPut.moneyEnterance.transform.position, newObj.transform.position);
+                newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance).OnComplete(() =>
+                {
+
+                });
+            });
+            
+            currentCashCount -= (int)moneyCollectables[startIndex].GetType();
+        }
+    }
+
+    private void RecalculateMoney()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<ICollectable>(out var collectable))
         {
-            collectable.Collect();
-            var collectableTrans = collectable.GetTransform();
-            var startIndex = currentCashCount % moneyArray.Length;
-            var childIndex = currentCashCount / moneyArray.Length;
-            
-            moneyArray[startIndex].gameObject.SetActive(true);
-            
-            collectableTrans.SetParent(moneyArray[startIndex]);
-            collectableTrans.localRotation = Quaternion.Euler(Vector3.zero);
-            collectableTrans.DOLocalMove(Vector3.zero, 0.5f).OnComplete(() =>
-            {
-                collectableTrans.SetParent(null);
-                collectableTrans.gameObject.SetActive(false);
-                
-                moneyArray[startIndex].GetChild(0).GetChild(0).GetChild(Mathf.Clamp(childIndex - 1,0,1000)).gameObject.SetActive(false);
-                moneyArray[startIndex].GetChild(0).GetChild(0).GetChild(childIndex).gameObject.SetActive(true);
-            });
-            
-            currentCashCount++;
+            CollectMoney(collectable);
         }
         else if (other.TryGetComponent<BetArea>(out var betArea))
         {

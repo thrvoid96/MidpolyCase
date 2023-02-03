@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4081192444530083018
 Transform:
   m_ObjectHideFlags: 0
@@ -173,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &610828201339301707
 Transform:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &43911412769152883
 Transform:
   m_ObjectHideFlags: 0
@@ -490,7 +490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2756256717582736220
 Transform:
   m_ObjectHideFlags: 0
@@ -844,7 +844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8080561244423886129
 Transform:
   m_ObjectHideFlags: 0
@@ -939,7 +939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9141502255534055636
 Transform:
   m_ObjectHideFlags: 0
@@ -971,7 +971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1300294529275663680
 Transform:
   m_ObjectHideFlags: 0
@@ -1148,7 +1148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4175362143868841477
 Transform:
   m_ObjectHideFlags: 0
@@ -1416,7 +1416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1493228107225156429
 Transform:
   m_ObjectHideFlags: 0
@@ -1448,7 +1448,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6094492513109641278
 Transform:
   m_ObjectHideFlags: 0
@@ -1544,7 +1544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4160063344496162860
 Transform:
   m_ObjectHideFlags: 0
@@ -1825,7 +1825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7364568385826786234
 Transform:
   m_ObjectHideFlags: 0
@@ -1857,7 +1857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3577046599349941211
 Transform:
   m_ObjectHideFlags: 0
@@ -2021,7 +2021,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1535149706162539856
 Transform:
   m_ObjectHideFlags: 0
@@ -2250,7 +2250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2046363207790753170
 Transform:
   m_ObjectHideFlags: 0
@@ -2345,7 +2345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4103615848074017590
 Transform:
   m_ObjectHideFlags: 0
@@ -2471,7 +2471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8594195495775475971
 Transform:
   m_ObjectHideFlags: 0
@@ -2503,7 +2503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3435174852172351965
 Transform:
   m_ObjectHideFlags: 0
@@ -2694,7 +2694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3106077114853879152
 Transform:
   m_ObjectHideFlags: 0
@@ -2726,7 +2726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2809596818874723585
 Transform:
   m_ObjectHideFlags: 0
@@ -2955,7 +2955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3017,7 +3017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3079,7 +3079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3141,7 +3141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3203,7 +3203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3265,7 +3265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3393,7 +3393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3455,7 +3455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3587,7 +3587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3768,7 +3768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3830,7 +3830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3892,7 +3892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -3954,7 +3954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4016,7 +4016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4078,7 +4078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4140,7 +4140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4202,7 +4202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4264,7 +4264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4326,7 +4326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
@@ -4388,7 +4388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7299323552347914521, guid: b3ed7d509613d96439d1560280175634, type: 3}
       propertyPath: m_Name
-      value: PileOfCash
+      value: StackMoney
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3ed7d509613d96439d1560280175634, type: 3}
