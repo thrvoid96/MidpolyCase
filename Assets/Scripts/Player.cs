@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private Transform parentObj;
     private Transform[] moneyArray;
 
-    private float input;
+    private float input, savedMaxXDistance;
     TransformAccessArray accessArray;
     private static NativeArray<Keyframe> xCurveKeys,curve1Keys,curve2Keys;
 
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         LevelManager.Instance.gameStart += StartRun;
-        
+        savedMaxXDistance = maxXDistance;
         parentObj = transform.parent;
 
         moneyArray = new Transform[moneyHolderParent.childCount];
@@ -128,9 +128,7 @@ public class Player : MonoBehaviour
         curve2Keys = new NativeArray<Keyframe>(newKeyFrames2, Allocator.Persistent);
         xCurveKeys = new NativeArray<Keyframe>(newKeyFrames3, Allocator.Persistent);
     }
-    
-  
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<ICollectable>(out var collectable))
@@ -155,6 +153,29 @@ public class Player : MonoBehaviour
             
             currentCashCount++;
         }
+        else if (other.TryGetComponent<BetArea>(out var betArea))
+        {
+            betArea.EnterArea();
+            
+            float randomVal = maxXDistance;
+            DOTween.To(() => randomVal, x => randomVal = x, 2f, 1f).OnUpdate(() =>
+            {
+                maxXDistance = randomVal;
+            });
+        }
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<BetArea>(out var betArea))
+        {
+            betArea.ExitArea();
+            
+            float randomVal = maxXDistance;
+            DOTween.To(() => randomVal, x => randomVal = x, savedMaxXDistance, 1f).OnUpdate(() =>
+            {
+                maxXDistance = randomVal;
+            });
+        }
+    }
 }
