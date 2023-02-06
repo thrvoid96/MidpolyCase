@@ -20,7 +20,7 @@ public class BetArea : MonoBehaviour
     private void OnValidate()
     {
         belts[0].SetText(leftBeltAnswer);
-        belts[1].SetText(leftBeltAnswer);
+        belts[1].SetText(rightBeltAnswer);
         multiplierText.text = "BETTING ODDS <size=150%> x" + Multiplier;
         belts[0].SetMat(correctBelt == belts[0].beltType);
         belts[1].SetMat(correctBelt == belts[1].beltType);
@@ -57,7 +57,8 @@ public class BetArea : MonoBehaviour
             // Do bad ui, no rewards
             return;
         }
-
+        
+        beltToCheck.StartMoneyCollect();
         var moneyList = beltToCheck.getMoneyObjects;
 
         for (int i = 0; i < totalBetOnCorrect * Multiplier; i++)

@@ -28,7 +28,6 @@ public class VictoryPanel : Singleton<VictoryPanel>
     {
         nextButton.interactable = false;
         GameManager.Level++;
-       
         
         if (GameManager.Level-1 <= LevelManager.Instance.levelAsset.levelPrefabs.Count)
         {

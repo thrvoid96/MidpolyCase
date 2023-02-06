@@ -16,18 +16,19 @@ public class Player : Singleton<Player>
     [SerializeField] private Transform moneyHolderParent;
     [SerializeField] private AnimationCurve xCurve, yCurveEnd, yCurveStart;
     [SerializeField] private Animator animator;
-
+    [field: SerializeField] public int currentCashCount { get; private set; }
+    
     private Vector3 tempPos;
     private Transform parentObj;
     private Transform[] moneyArray;
     private ICollectable[] moneyCollectables;
 
     private float input, savedMaxXDistance;
-    TransformAccessArray accessArray;
+    private TransformAccessArray accessArray;
     private static NativeArray<Keyframe> xCurveKeys,curve1Keys,curve2Keys;
-
-    [SerializeField] private int currentCashCount;
+    
     private Tween moneyPutTween;
+    private Coroutine movementRoutine;
     
     private struct UpdateJob : IJobParallelForTransform
     {
@@ -51,7 +52,7 @@ public class Player : Singleton<Player>
     private void StartRun()
     {
         animator.SetTrigger(AnimatorHashes.DoRun);
-        StartCoroutine(nameof(RunLoop));
+        movementRoutine = StartCoroutine(nameof(RunLoop));
     }
 
     private IEnumerator RunLoop()
@@ -190,7 +191,7 @@ public class Player : Singleton<Player>
         
         newObj.transform.localScale = Vector3.one;
         newObj.transform.DOLocalRotate(Vector3.zero, 0.25f);
-        newObj.transform.DOLocalMove(new Vector3(0f, 0.5f, newObj.transform.localPosition.z), 0.25f).OnComplete(() =>
+        newObj.transform.DOLocalMove(new Vector3(0f, -0.2f, newObj.transform.localPosition.z), 0.25f).OnComplete(() =>
         {
             var distance = Vector3.Distance(beltToPut.moneyEnterance.transform.position, newObj.transform.position);
             newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance * 0.05f).OnComplete(() =>
@@ -198,15 +199,25 @@ public class Player : Singleton<Player>
                 beltToPut.AddBetOnBelt(1);
             }).SetEase(Ease.Linear);
         });
-
-        
     }
-
-    private void RecalculateMoney()
+    
+    public GameObject PopNextMoney()
     {
+        if (currentCashCount - 1 < 0)
+        {
+            return null;
+        }
         
-    }
+        currentCashCount -= 1;
+        var startIndex = currentCashCount;
+        moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(false);
+        moneyArray[startIndex].gameObject.SetActive(false);
+        
+        var newObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney, moneyArray[startIndex].position, moneyArray[startIndex].rotation, null);
 
+        return newObj;
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<ICollectable>(out var collectable))
@@ -227,9 +238,17 @@ public class Player : Singleton<Player>
         {
             moneyPutTween = DOVirtual.DelayedCall(0.1f, delegate { PutMoneyOnBelt(belt); }).SetLoops(-1,LoopType.Restart);
         }
+        else if (other.TryGetComponent<EndGame>(out var endGame))
+        {
+            StopCoroutine(movementRoutine);
+            transform.DOLocalMoveX(0f, 1f).OnComplete(() =>
+            {
+                animator.SetTrigger(AnimatorHashes.DoIdle);
+            });
+            endGame.FinishGame();
+        }
     }
     
-
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent<BetArea>(out var betArea))

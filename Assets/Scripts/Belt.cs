@@ -10,6 +10,7 @@ public class Belt : MonoBehaviour
     [SerializeField] private Material rightMat, wrongMat, defaultMat;
     [SerializeField] private MeshRenderer triangle;
     [SerializeField] private Transform beltCashParent;
+    [SerializeField] private ParticleSystem particleToPlay;
     [field: SerializeField] public GameObject QuestionObject { get; private set; }
     public Transform moneyEnterance;
     public BeltType beltType;
@@ -51,7 +52,7 @@ public class Belt : MonoBehaviour
         betAmount += amount;
         if (currentIndex == moneyObjects.Count)
         {
-            Debug.LogError("Belt capacity reached");
+            Debug.Log("Belt capacity reached");
             return;
         }
         moneyObjects[currentIndex].SetActive(true);
@@ -61,5 +62,15 @@ public class Belt : MonoBehaviour
     public int GetCurrentBetAmount()
     {
         return betAmount;
+    }
+    
+    public void StartMoneyCollect()
+    {
+        for (int i = 0; i < moneyObjects.Count; i++)
+        {
+            moneyObjects[i].SetActive(false);
+        }
+        
+        particleToPlay.Play();
     }
 }
