@@ -51,14 +51,25 @@ public class BetArea : MonoBehaviour
     {
         var beltToCheck = belts[(int) correctBelt];
         var totalBetOnCorrect = beltToCheck.GetCurrentBetAmount();
+        var correctAnswerGiven = totalBetOnCorrect > 0;
         
-        if (totalBetOnCorrect <= 0)
+        if (!correctAnswerGiven)
         {
-            // Do bad ui, no rewards
+            if (correctBelt == BeltType.BeltLeft)
+            {
+                CheckForFail(correctAnswerGiven,BeltType.BeltRight);
+            }
+            else
+            {
+                CheckForFail(correctAnswerGiven,BeltType.BeltLeft);
+            }
+            
             return;
         }
         
+        AnswerPanel.Instance.ShowAnswerPanel(correctAnswerGiven, beltToCheck.answerText, Multiplier);
         beltToCheck.StartMoneyCollect();
+        
         var moneyList = beltToCheck.getMoneyObjects;
 
         for (int i = 0; i < totalBetOnCorrect * Multiplier; i++)
@@ -69,5 +80,17 @@ public class BetArea : MonoBehaviour
             
             Player.Instance.CollectMoney(spawnedObj,false);
         }
+    }
+
+    private void CheckForFail(bool correctAnswerGiven,BeltType beltType)
+    {
+        var beltToCheck = belts[(int) beltType];
+        if (beltToCheck.GetCurrentBetAmount() == 0)
+        {
+            Debug.Log("Player did not bet at all");
+            return;
+        }
+        
+        AnswerPanel.Instance.ShowAnswerPanel(correctAnswerGiven, beltToCheck.answerText, Multiplier);
     }
 }

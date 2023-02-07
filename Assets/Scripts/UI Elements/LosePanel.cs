@@ -26,16 +26,16 @@ public class LosePanel : Singleton<LosePanel>
             InputPanel.Instance.gameObject.SetActive(false);
             transform.GetChild(0).gameObject.SetActive(true);
             AudioManager.Play(AudioClipName.Failed);
-            var finalScale = Vector3.one * 1.2f;
+            var finalScale = Vector3.one * 1.1f;
             ScaleLoop(finalScale);
         }
     }
 
     private void ScaleLoop(Vector3 finalScale)
     {
-        retryButton.transform.DOScale(finalScale, 1f).OnComplete(() =>
+        retryButton.transform.DOScale(finalScale, 0.5f).OnComplete(() =>
         {
-            retryButton.transform.DOScale(Vector3.one, 1f).OnComplete(() =>
+            retryButton.transform.DOScale(Vector3.one, 0.5f).OnComplete(() =>
             {
                 ScaleLoop(finalScale);
             });

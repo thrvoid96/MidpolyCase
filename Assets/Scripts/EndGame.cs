@@ -30,21 +30,31 @@ public class EndGame : MonoBehaviour
 
     public void FinishGame()
     {
-        if (Player.Instance.currentCashCount == 0)
+        if (Player.Instance.CurrentCashCount == 0)
         {
             LevelManager.Instance.gameLost.Invoke();
             return;
         }
         
         cameraTrans.SetParent(transform);
-        cameraMoveTrans = cameraTrans.DOLocalMove(cameraStartPos.localPosition, cameraStartAnimDur);
+        cameraTrans.DOLocalMove(cameraStartPos.localPosition, cameraStartAnimDur);
         cameraTrans.DOLocalRotate(cameraEndPos.localRotation.eulerAngles, cameraStartAnimDur).OnComplete(() =>
         {
             nextMoneyPos = moneyStartPos.position;
             moneyPopTwn = DOVirtual.DelayedCall(moneyPopDur, PutMoneyOnEnd).SetLoops(-1, LoopType.Restart);
-            cameraMoveTrans = cameraTrans.DOLocalMove(cameraEndPos.localPosition, cameraEndAnimDur).OnComplete(() =>
+            cameraTrans.DOLocalMove(cameraEndPos.localPosition, cameraEndAnimDur).OnComplete(() =>
             {
-                cameraMoveTrans = cameraTrans.DOLocalMove(cameraEndPos.localPosition + new Vector3(0f, nextMoneyPosY * totalPlacedMoneyCount), moneyPopDur).SetEase(Ease.Linear);
+                cameraMoveTrans = cameraTrans.DOLocalMove(cameraEndPos.localPosition + new Vector3(0f, nextMoneyPosY * totalPlacedMoneyCount), moneyPopDur).OnComplete(
+                        () =>
+                        {
+                            if (Player.Instance.CurrentCashCount != 0)
+                            {
+                                var distance = Mathf.Abs(cameraTrans.localPosition.y - cameraStartPos.localPosition.y);
+                                cameraMoveTrans = cameraTrans.DOLocalMove(cameraStartPos.localPosition, distance * 0.25f)
+                                    .SetEase(Ease.Linear);
+                            }
+                        })
+                    .SetEase(Ease.Linear);
             }).SetEase(Ease.Linear);
         }).SetEase(Ease.Linear);
     }
@@ -56,6 +66,7 @@ public class EndGame : MonoBehaviour
         if (nextMoney == null)
         {
             moneyPopTwn.Kill();
+            cameraMoveTrans?.Kill();
             LevelManager.Instance.gameWon.Invoke();
         }
 
@@ -84,17 +95,10 @@ public class EndGame : MonoBehaviour
                     extraRewardSectionConfettis[extraConfettiIndex].Play();
                     extraConfettiIndex++;
                 }
-
-                if (!cameraMoveTrans.active)
-                {
-                    cameraMoveTrans = cameraTrans
-                        .DOLocalMove(
-                            cameraEndPos.localPosition + new Vector3(0f, nextMoneyPosY * totalPlacedMoneyCount),
-                            moneyPopDur).SetEase(Ease.Linear);
-                }
             }
             else
             {
+                cameraMoveTrans?.Kill();
                 nextMoney.SetActive(false);
             }
             

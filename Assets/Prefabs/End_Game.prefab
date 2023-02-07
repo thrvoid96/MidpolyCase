@@ -4252,7 +4252,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3506503083311168348}
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0.16291133, y: 45.16, z: -2.19}
+  m_LocalPosition: {x: 0.16291133, y: 45.16, z: -4.58}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5839,7 +5839,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 15, y: 100, z: 3}
-  m_Center: {x: 0, y: 45, z: -2}
+  m_Center: {x: 0, y: 45, z: -5}
 --- !u!114 &3099586364479029868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5855,7 +5855,7 @@ MonoBehaviour:
   cameraStartPos: {fileID: 6831356116768193377}
   cameraEndPos: {fileID: 8504178365321192406}
   moneyStartPos: {fileID: 349449535806390492}
-  cameraStartAnimDur: 2
+  cameraStartAnimDur: 1.5
   cameraEndAnimDur: 1
   moneyPopDur: 0.1
   totalSections: 16

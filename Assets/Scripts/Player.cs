@@ -16,7 +16,8 @@ public class Player : Singleton<Player>
     [SerializeField] private Transform moneyHolderParent;
     [SerializeField] private AnimationCurve xCurve, yCurveEnd, yCurveStart;
     [SerializeField] private Animator animator;
-    [field: SerializeField] public int currentCashCount { get; private set; }
+    [SerializeField] private ParticleSystem confetti;
+    [field: SerializeField] public int CurrentCashCount { get; private set; }
     
     private Vector3 tempPos;
     private Transform parentObj;
@@ -29,6 +30,8 @@ public class Player : Singleton<Player>
     
     private Tween moneyPutTween;
     private Coroutine movementRoutine;
+
+    private bool canMove = true;
     
     private struct UpdateJob : IJobParallelForTransform
     {
@@ -61,19 +64,22 @@ public class Player : Singleton<Player>
         while (true)
         {
             var localPosition = transform.localPosition;
-            tempPos = localPosition;
-            tempPos.x = Mathf.Clamp(tempPos.x + InputPanel.valX * sidewaysSpeed * 10, -maxXDistance, maxXDistance);
-            localPosition = Vector3.Lerp(localPosition, tempPos, 0.8f);
-            transform.localPosition = localPosition;
-            InputPanel.valX = Mathf.Lerp(InputPanel.valX, 0, 0.05f);
-            parentObj.Translate(new Vector3(0, 0, 1) * Time.deltaTime * forwardSpeed);
-
+            if (canMove)
+            {
+                tempPos = localPosition;
+                tempPos.x = Mathf.Clamp(tempPos.x + InputPanel.valX * sidewaysSpeed * 10, -maxXDistance, maxXDistance);
+                localPosition = Vector3.Lerp(localPosition, tempPos, 0.8f);
+                transform.localPosition = localPosition;
+                InputPanel.valX = Mathf.Lerp(InputPanel.valX, 0, 0.05f);
+                parentObj.Translate(new Vector3(0, 0, 1) * Time.deltaTime * forwardSpeed);
+            }
+            
             input = localPosition.x / maxXDistance;
 
             var job = new UpdateJob
             {
                 ArrayLength = moneyArray.Length,
-                currentCash =  currentCashCount,
+                currentCash =  CurrentCashCount,
                 InputFactor = input
             };
             
@@ -141,7 +147,7 @@ public class Player : Singleton<Player>
 
     public void CollectMoney(ICollectable collectable, bool doScaleEffect)
     {
-        if (currentCashCount == moneyArray.Length)
+        if (CurrentCashCount == moneyArray.Length)
         {
             Debug.Log("Max money reached");
             return;
@@ -149,7 +155,7 @@ public class Player : Singleton<Player>
         
         collectable.Collect();
         var collectableTrans = collectable.GetTransform();
-        var startIndex = currentCashCount;
+        var startIndex = CurrentCashCount;
 
         moneyArray[startIndex].gameObject.SetActive(true);
         
@@ -173,19 +179,24 @@ public class Player : Singleton<Player>
             moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(true);
         });
 
-        currentCashCount++;
+        CurrentCashCount++;
+    }
+
+    public void PlayConfettiEffect()
+    {
+        confetti.Play();
     }
 
     private void PutMoneyOnBelt(Belt beltToPut)
     {
-        if (currentCashCount - 1 < 0)
+        if (CurrentCashCount - 1 < 0)
         {
             moneyPutTween.Kill();
             return;
         }
         
-        currentCashCount -= 1;
-        var startIndex = currentCashCount;
+        CurrentCashCount -= 1;
+        var startIndex = CurrentCashCount;
         moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(false);
         moneyArray[startIndex].gameObject.SetActive(false);
         
@@ -206,13 +217,13 @@ public class Player : Singleton<Player>
     
     public GameObject PopNextMoney()
     {
-        if (currentCashCount - 1 < 0)
+        if (CurrentCashCount - 1 < 0)
         {
             return null;
         }
         
-        currentCashCount -= 1;
-        var startIndex = currentCashCount;
+        CurrentCashCount -= 1;
+        var startIndex = CurrentCashCount;
         moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(false);
         moneyArray[startIndex].gameObject.SetActive(false);
         
@@ -243,9 +254,10 @@ public class Player : Singleton<Player>
         }
         else if (other.TryGetComponent<EndGame>(out var endGame))
         {
-            StopCoroutine(movementRoutine);
-            transform.DOLocalMoveX(0f, 1f).OnComplete(() =>
+            canMove = false;
+            transform.DOLocalMove(new Vector3(0f,transform.position.y,3f), 0.5f).OnComplete(() =>
             {
+                StopCoroutine(movementRoutine);
                 animator.SetTrigger(AnimatorHashes.DoIdle);
             });
             endGame.FinishGame();

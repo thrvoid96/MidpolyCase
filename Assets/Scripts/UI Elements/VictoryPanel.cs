@@ -21,16 +21,16 @@ public class VictoryPanel : Singleton<VictoryPanel>
             AudioManager.Play(AudioClipName.VictoryPanelOpen);
             InputPanel.Instance.gameObject.SetActive(false);
             transform.GetChild(0).gameObject.SetActive(true);
-            var finalScale = Vector3.one * 1.2f;
+            var finalScale = Vector3.one * 1.1f;
             ScaleLoop(finalScale);
         }
     }
 
     private void ScaleLoop(Vector3 finalScale)
     {
-        nextButton.transform.DOScale(finalScale, 1f).OnComplete(() =>
+        nextButton.transform.DOScale(finalScale, 0.5f).OnComplete(() =>
         {
-            nextButton.transform.DOScale(Vector3.one, 1f).OnComplete(() =>
+            nextButton.transform.DOScale(Vector3.one, 0.5f).OnComplete(() =>
             {
                 ScaleLoop(finalScale);
             });

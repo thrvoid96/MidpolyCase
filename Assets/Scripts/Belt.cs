@@ -18,12 +18,14 @@ public class Belt : MonoBehaviour
     private List<GameObject> moneyObjects = new();
     private int currentIndex;
     private int betAmount;
+    public string answerText { get; private set; }
 
     public List<GameObject> getMoneyObjects => moneyObjects;
 
     private void Awake()
     {
         triangle.material = defaultMat;
+        answerText = beltText.text;
         
         foreach (Transform child in beltCashParent)
         {
