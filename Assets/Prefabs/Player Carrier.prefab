@@ -997,8 +997,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4175362143303422987}
+  - component: {fileID: 4276844601083447729}
   m_Layer: 0
-  m_Name: CarrierObject
+  m_Name: StackHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,6 +1040,91 @@ Transform:
   m_Father: {fileID: 5502856438537390264}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: -90, z: -90}
+--- !u!114 &4276844601083447729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4175362143303422986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf76e854f3a3e743a85822e4378807b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.008524878
+      outSlope: 0.008524878
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.10128914
+    - serializedVersion: 3
+      time: 20
+      value: 4
+      inSlope: 0.54885536
+      outSlope: 0.2839047
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.038673975
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  yCurveEnd:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.3
+      inSlope: 0.44641337
+      outSlope: 0.44641337
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.06836143
+    - serializedVersion: 3
+      time: 20
+      value: 4.1
+      inSlope: 0.011923394
+      outSlope: 0.011923394
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10681391
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  yCurveStart:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.3
+      inSlope: 0.19
+      outSlope: 0.19
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 20
+      value: 4.1
+      inSlope: 0.19
+      outSlope: 0.19
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <CurrentCashCount>k__BackingField: 0
 --- !u!1 &4175362143784664813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,7 +1214,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.05e-43, y: 46, z: 12, w: -7.4870907e+24}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -1.8384836e+30}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1610,91 +1696,10 @@ MonoBehaviour:
   forwardSpeed: 10
   sidewaysSpeed: 1.2
   maxXDistance: 4
-  moneyHolderParent: {fileID: 4175362143303422987}
-  xCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.0010583969
-      outSlope: 0.0010583969
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.66850835
-    - serializedVersion: 3
-      time: 20
-      value: 2
-      inSlope: 0.22945207
-      outSlope: 0.22945207
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.038673975
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  yCurveEnd:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.3
-      inSlope: 0.24669003
-      outSlope: 0.24669003
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 7.8956
-      value: 2.2477658
-      inSlope: 0.2229388
-      outSlope: 0.2229388
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.27237463
-      outWeight: 0.05814044
-    - serializedVersion: 3
-      time: 18.659607
-      value: 2.9953475
-      inSlope: 0.009349642
-      outSlope: 0.009349642
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.13452888
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  yCurveStart:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.3
-      inSlope: 0.19999999
-      outSlope: 0.19
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 20
-      value: 4.1
-      inSlope: 0.19
-      outSlope: 0.18999998
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  putMoneyOnBeltDelay: 0.05
   animator: {fileID: 1829883249828120113}
   confetti: {fileID: 7269054354230916461}
-  <CurrentCashCount>k__BackingField: 0
+  <PlayerStackHandler>k__BackingField: {fileID: 4276844601083447729}
 --- !u!65 &4840379698573638779
 BoxCollider:
   m_ObjectHideFlags: 0

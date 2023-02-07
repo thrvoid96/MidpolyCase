@@ -13,46 +13,29 @@ public class Player : Singleton<Player>
     [SerializeField] private float forwardSpeed = 10;
     [SerializeField] private float sidewaysSpeed = 1.2f;
     [SerializeField] private float maxXDistance = 5f;
-    [SerializeField] private Transform moneyHolderParent;
-    [SerializeField] private AnimationCurve xCurve, yCurveEnd, yCurveStart;
+    [SerializeField] private float putMoneyOnBeltDelay = 0.05f;
+    
     [SerializeField] private Animator animator;
     [SerializeField] private ParticleSystem confetti;
-    [field: SerializeField] public int CurrentCashCount { get; private set; }
+    [field: SerializeField] public PlayerStackHandler PlayerStackHandler { get; private set; }
     
     private Vector3 tempPos;
     private Transform parentObj;
-    private Transform[] moneyArray;
-    private ICollectable[] moneyCollectables;
 
     private float input, savedMaxXDistance;
-    private TransformAccessArray accessArray;
-    private static NativeArray<Keyframe> xCurveKeys,curve1Keys,curve2Keys;
     
-    private Tween moneyPutTween;
+    public Tween moneyPutTween;
     private Coroutine movementRoutine;
 
     private bool canMove = true;
     
-    private struct UpdateJob : IJobParallelForTransform
+    private void Awake()
     {
-        public int ArrayLength,currentCash;
-        public float InputFactor;
-        public void Execute(int i, TransformAccess transform)
-        {
-            float t = InputFactor * i / ArrayLength;
-            transform.localPosition = new Vector3(xCurveKeys[i].value * InputFactor * Mathf.Clamp(1f - (0.03f * currentCash),0f,1f), 
-                Mathf.Lerp(curve1Keys[i].value, curve2Keys[i].value, Mathf.Abs(t) * Mathf.Clamp(1f - (0.03f * currentCash),0f,1f)), transform.localPosition.z);
-            transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,t * -100f) * Mathf.Clamp(1f - (0.03f * currentCash),0f,1f));
-        }
+        LevelManager.Instance.gameStart += StartRun;
+        savedMaxXDistance = maxXDistance;
+        parentObj = transform.parent;
     }
     
-    private void OnDestroy()
-    {
-        accessArray.Dispose();
-        curve1Keys.Dispose();
-        curve2Keys.Dispose();
-    }  
-
     private void StartRun()
     {
         animator.SetTrigger(AnimatorHashes.DoRun);
@@ -76,167 +59,23 @@ public class Player : Singleton<Player>
             
             input = localPosition.x / maxXDistance;
 
-            var job = new UpdateJob
-            {
-                ArrayLength = moneyArray.Length,
-                currentCash =  CurrentCashCount,
-                InputFactor = input
-            };
-            
-            JobHandle jobHandle = job.Schedule(accessArray);
-            
-            jobHandle.Complete();
+            PlayerStackHandler.UpdateStackPositions(input);
             
             yield return null;
         }
     }
 
-    private void Awake()
-    {
-        LevelManager.Instance.gameStart += StartRun;
-        savedMaxXDistance = maxXDistance;
-        parentObj = transform.parent;
-
-        var childCount = moneyHolderParent.childCount;
-
-        moneyArray = new Transform[childCount];
-        moneyCollectables = new ICollectable[childCount];
-
-        for (int i = 0; i < childCount; i++)
-        {
-            var child = moneyHolderParent.GetChild(i);
-            moneyArray[i] = child;
-            moneyCollectables[i] = child.GetChild(0).GetComponent<ICollectable>();
-        }
-
-        accessArray = new TransformAccessArray(moneyArray);
-        
-        var newKeyFrames = new Keyframe[moneyArray.Length];
-        var newKeyFrames2 = new Keyframe[moneyArray.Length];
-        var newKeyFrames3 = new Keyframe[moneyArray.Length];
-
-        for (int i = 0; i < moneyArray.Length; i++)
-        {
-            Keyframe keyframe = new Keyframe
-            {
-                time = i,
-                value = yCurveStart.Evaluate(i)
-            };
-            
-            Keyframe keyframe2 = new Keyframe
-            {
-                time = i,
-                value = yCurveEnd.Evaluate(i)
-            };
-            
-            Keyframe keyframe3 = new Keyframe
-            {
-                time = i,
-                value = xCurve.Evaluate(i)
-            };
-
-            newKeyFrames[i] = keyframe;
-            newKeyFrames2[i] = keyframe2;
-            newKeyFrames3[i] = keyframe3;
-        }
-        
-        curve1Keys = new NativeArray<Keyframe>(newKeyFrames, Allocator.Persistent);
-        curve2Keys = new NativeArray<Keyframe>(newKeyFrames2, Allocator.Persistent);
-        xCurveKeys = new NativeArray<Keyframe>(newKeyFrames3, Allocator.Persistent);
-    }
-
-    public void CollectMoney(ICollectable collectable, bool doScaleEffect)
-    {
-        if (CurrentCashCount == moneyArray.Length)
-        {
-            Debug.Log("Max money reached");
-            return;
-        }
-        
-        collectable.Collect();
-        var collectableTrans = collectable.GetTransform();
-        var startIndex = CurrentCashCount;
-
-        moneyArray[startIndex].gameObject.SetActive(true);
-        
-        collectableTrans.SetParent(moneyArray[startIndex]);
-        collectableTrans.localRotation = Quaternion.Euler(Vector3.zero);
-
-        if (doScaleEffect)
-        {
-            collectableTrans.localScale = Vector3.one * 0.5f;
-        }
-        else
-        {
-            collectableTrans.localScale = Vector3.one * 0.45f;
-        }
-        
-        collectableTrans.DOLocalMove(Vector3.zero, 0.5f).OnComplete(() =>
-        {
-            collectableTrans.SetParent(null);
-            collectableTrans.gameObject.SetActive(false);
-                
-            moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(true);
-        });
-
-        CurrentCashCount++;
-    }
-
+    
     public void PlayConfettiEffect()
     {
         confetti.Play();
-    }
-
-    private void PutMoneyOnBelt(Belt beltToPut)
-    {
-        if (CurrentCashCount - 1 < 0)
-        {
-            moneyPutTween.Kill();
-            return;
-        }
-        
-        CurrentCashCount -= 1;
-        var startIndex = CurrentCashCount;
-        moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(false);
-        moneyArray[startIndex].gameObject.SetActive(false);
-        
-        var newObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney, moneyArray[startIndex].position, moneyArray[startIndex].rotation, beltToPut.transform);
-        
-        newObj.transform.localScale = Vector3.one;
-        newObj.transform.DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.Linear);
-        newObj.transform.DOLocalMove(new Vector3(0f, -0.2f, newObj.transform.localPosition.z), 0.1f).OnComplete(() =>
-        {
-            var distance = Vector3.Distance(beltToPut.moneyEnterance.transform.position, newObj.transform.position);
-            newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance * 0.03f).OnComplete(() =>
-            {
-                beltToPut.AddBetOnBelt(1);
-                newObj.SetActive(false);
-            }).SetEase(Ease.Linear);
-        }).SetEase(Ease.Linear);
-    }
-    
-    public GameObject PopNextMoney()
-    {
-        if (CurrentCashCount - 1 < 0)
-        {
-            return null;
-        }
-        
-        CurrentCashCount -= 1;
-        var startIndex = CurrentCashCount;
-        moneyCollectables[startIndex].GetTransform().GetChild(0).gameObject.SetActive(false);
-        moneyArray[startIndex].gameObject.SetActive(false);
-        
-        var newObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney, moneyArray[startIndex].position, moneyArray[startIndex].rotation, null);
-
-        return newObj;
     }
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<ICollectable>(out var collectable))
         {
-            CollectMoney(collectable,true);
+            PlayerStackHandler.CollectMoney(collectable,true);
         }
         else if(other.TryGetComponent<BetArea>(out var betArea))
         {
@@ -250,7 +89,8 @@ public class Player : Singleton<Player>
         }
         else if (other.TryGetComponent<Belt>(out var belt))
         {
-            moneyPutTween = DOVirtual.DelayedCall(0.05f, delegate { PutMoneyOnBelt(belt); }).SetLoops(-1,LoopType.Restart);
+            moneyPutTween = DOVirtual.DelayedCall(putMoneyOnBeltDelay, delegate { PlayerStackHandler.PutMoneyOnBelt(belt); })
+                .SetLoops(-1, LoopType.Restart);
         }
         else if (other.TryGetComponent<EndGame>(out var endGame))
         {

@@ -30,7 +30,7 @@ public class EndGame : MonoBehaviour
 
     public void FinishGame()
     {
-        if (Player.Instance.CurrentCashCount == 0)
+        if (Player.Instance.PlayerStackHandler.CurrentCashCount == 0)
         {
             LevelManager.Instance.gameLost.Invoke();
             return;
@@ -47,7 +47,7 @@ public class EndGame : MonoBehaviour
                 cameraMoveTrans = cameraTrans.DOLocalMove(cameraEndPos.localPosition + new Vector3(0f, nextMoneyPosY * totalPlacedMoneyCount), moneyPopDur).OnComplete(
                         () =>
                         {
-                            if (Player.Instance.CurrentCashCount != 0)
+                            if (Player.Instance.PlayerStackHandler.CurrentCashCount != 0)
                             {
                                 var distance = Mathf.Abs(cameraTrans.localPosition.y - cameraStartPos.localPosition.y);
                                 cameraMoveTrans = cameraTrans.DOLocalMove(cameraStartPos.localPosition, distance * 0.25f)
@@ -61,7 +61,7 @@ public class EndGame : MonoBehaviour
 
     private void PutMoneyOnEnd()
     {
-        var nextMoney = Player.Instance.PopNextMoney();
+        var nextMoney = Player.Instance.PlayerStackHandler.PopNextMoney();
 
         if (nextMoney == null)
         {

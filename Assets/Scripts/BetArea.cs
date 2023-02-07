@@ -78,7 +78,7 @@ public class BetArea : MonoBehaviour
                 moneyList[i % moneyList.Count].transform.position,
                 Quaternion.identity, null).GetComponent<ICollectable>();
             
-            Player.Instance.CollectMoney(spawnedObj,false);
+            Player.Instance.PlayerStackHandler.CollectMoney(spawnedObj,false);
         }
     }
 

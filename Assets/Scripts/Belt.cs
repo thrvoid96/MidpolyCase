@@ -49,9 +49,9 @@ public class Belt : MonoBehaviour
         triangle.material = rightMat;
     }
 
-    public void AddBetOnBelt(int amount)
+    public void AddBetOnBelt()
     {
-        betAmount += amount;
+        betAmount += 1;
         if (currentIndex == moneyObjects.Count)
         {
             Debug.Log("Belt capacity reached");
