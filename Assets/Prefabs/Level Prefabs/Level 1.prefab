@@ -2733,10 +2733,6 @@ PrefabInstance:
       propertyPath: m_text
       value: BETTING ODDS <size=150%> x2
       objectReference: {fileID: 0}
-    - target: {fileID: 4293306341146230893, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4293306341321108208, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
       propertyPath: m_Name
       value: Bet_Area (2)
