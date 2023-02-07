@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : Singleton<LevelManager>
@@ -59,6 +60,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public void RestartSceneWithDelay(float delay)
     {
+        DOTween.KillAll();
         StartCoroutine(SceneResetDelay(delay));
     }
 

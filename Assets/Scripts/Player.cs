@@ -32,13 +32,14 @@ public class Player : Singleton<Player>
     
     private struct UpdateJob : IJobParallelForTransform
     {
-        public int ArrayLength;
+        public int ArrayLength,currentCash;
         public float InputFactor;
         public void Execute(int i, TransformAccess transform)
         {
             float t = InputFactor * i / ArrayLength;
-            transform.localPosition = new Vector3(xCurveKeys[i].value * InputFactor, Mathf.Lerp(curve1Keys[i].value, curve2Keys[i].value, Mathf.Abs(t)), transform.localPosition.z);
-            transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,t * -100f));
+            transform.localPosition = new Vector3(xCurveKeys[i].value * InputFactor * Mathf.Clamp(1f - (0.03f * currentCash),0f,1f), 
+                Mathf.Lerp(curve1Keys[i].value, curve2Keys[i].value, Mathf.Abs(t) * Mathf.Clamp(1f - (0.03f * currentCash),0f,1f)), transform.localPosition.z);
+            transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,t * -100f) * Mathf.Clamp(1f - (0.03f * currentCash),0f,1f));
         }
     }
     
@@ -72,6 +73,7 @@ public class Player : Singleton<Player>
             var job = new UpdateJob
             {
                 ArrayLength = moneyArray.Length,
+                currentCash =  currentCashCount,
                 InputFactor = input
             };
             
@@ -190,15 +192,16 @@ public class Player : Singleton<Player>
         var newObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney, moneyArray[startIndex].position, moneyArray[startIndex].rotation, beltToPut.transform);
         
         newObj.transform.localScale = Vector3.one;
-        newObj.transform.DOLocalRotate(Vector3.zero, 0.25f);
-        newObj.transform.DOLocalMove(new Vector3(0f, -0.2f, newObj.transform.localPosition.z), 0.25f).OnComplete(() =>
+        newObj.transform.DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.Linear);
+        newObj.transform.DOLocalMove(new Vector3(0f, -0.2f, newObj.transform.localPosition.z), 0.1f).OnComplete(() =>
         {
             var distance = Vector3.Distance(beltToPut.moneyEnterance.transform.position, newObj.transform.position);
-            newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance * 0.05f).OnComplete(() =>
+            newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance * 0.03f).OnComplete(() =>
             {
                 beltToPut.AddBetOnBelt(1);
+                newObj.SetActive(false);
             }).SetEase(Ease.Linear);
-        });
+        }).SetEase(Ease.Linear);
     }
     
     public GameObject PopNextMoney()
@@ -236,7 +239,7 @@ public class Player : Singleton<Player>
         }
         else if (other.TryGetComponent<Belt>(out var belt))
         {
-            moneyPutTween = DOVirtual.DelayedCall(0.1f, delegate { PutMoneyOnBelt(belt); }).SetLoops(-1,LoopType.Restart);
+            moneyPutTween = DOVirtual.DelayedCall(0.05f, delegate { PutMoneyOnBelt(belt); }).SetLoops(-1,LoopType.Restart);
         }
         else if (other.TryGetComponent<EndGame>(out var endGame))
         {
