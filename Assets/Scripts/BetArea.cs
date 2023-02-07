@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class BetArea : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro multiplierText;
+    [SerializeField] private TextMeshPro multiplierText, questionBoxText;
     
     [SerializeField] private float questionMoveSpeed;
     [SerializeField] private List<Belt> belts;
@@ -21,6 +21,7 @@ public class BetArea : MonoBehaviour
     {
         belts[0].SetText(leftBeltAnswer);
         belts[1].SetText(rightBeltAnswer);
+        questionBoxText.text = questionToAsk;
         multiplierText.text = "BETTING ODDS <size=150%> x" + Multiplier;
         belts[0].SetMat(correctBelt == belts[0].beltType);
         belts[1].SetMat(correctBelt == belts[1].beltType);
@@ -30,7 +31,7 @@ public class BetArea : MonoBehaviour
     private void Awake()
     {
         multiplierText.text = "BETTING ODDS <size=150%> x" + Multiplier;
-        
+        questionBoxText.transform.parent.gameObject.SetActive(false);
     }
     
     public void EnterArea()
@@ -74,7 +75,7 @@ public class BetArea : MonoBehaviour
 
         for (int i = 0; i < totalBetOnCorrect * Multiplier; i++)
         {
-            var spawnedObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.StackMoney,
+            var spawnedObj = ObjectPool.Instance.SpawnFromPool(PoolEnums.GroundMoney,
                 moneyList[i % moneyList.Count].transform.position,
                 Quaternion.identity, null).GetComponent<ICollectable>();
             

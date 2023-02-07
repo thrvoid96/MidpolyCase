@@ -50,7 +50,7 @@ public class EndGame : MonoBehaviour
                             if (Player.Instance.PlayerStackHandler.CurrentCashCount != 0)
                             {
                                 var distance = Mathf.Abs(cameraTrans.localPosition.y - cameraStartPos.localPosition.y);
-                                cameraMoveTrans = cameraTrans.DOLocalMove(cameraStartPos.localPosition, distance * 0.25f)
+                                cameraMoveTrans = cameraTrans.DOLocalMove(cameraStartPos.localPosition, distance * 0.2f)
                                     .SetEase(Ease.Linear);
                             }
                         })
@@ -77,7 +77,7 @@ public class EndGame : MonoBehaviour
             nextMoneyPos.x = nextMoneyPosX;
         }
         
-        nextMoney.transform.localScale = Vector3.one;
+        nextMoney.transform.localScale = Vector3.one * 2f;
         nextMoney.transform.DOLocalMove(nextMoneyPos, moneyPopDur).OnComplete(() =>
         {
             totalPlacedMoneyCount++;

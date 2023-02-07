@@ -1,5 +1,6 @@
 public enum PoolEnums
 {
     StackMoney,
-    EmptyObject
+    EmptyObject,
+    GroundMoney
 }

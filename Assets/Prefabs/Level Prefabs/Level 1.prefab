@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4293306341321108215, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4293306341321108215, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
       propertyPath: m_LocalPosition.z
@@ -630,6 +630,14 @@ PrefabInstance:
     - target: {fileID: 4293306341321108215, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293306341483434817, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
+      propertyPath: m_text
+      value: More albums sold?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293306341483434817, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
+      propertyPath: m_fontSize
+      value: 11.25
       objectReference: {fileID: 0}
     - target: {fileID: 4293306341750308343, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
       propertyPath: m_text
@@ -2751,7 +2759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4293306341321108215, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4293306341321108215, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2784,6 +2792,14 @@ PrefabInstance:
     - target: {fileID: 4293306341321108215, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293306341483434817, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
+      propertyPath: m_text
+      value: Score more goals?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293306341483434817, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
+      propertyPath: m_fontSize
+      value: 11.35
       objectReference: {fileID: 0}
     - target: {fileID: 4293306341750308343, guid: 4bd8a5ab38bfd2d46adc4579799fcb46, type: 3}
       propertyPath: m_text

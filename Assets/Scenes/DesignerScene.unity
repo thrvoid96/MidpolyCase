@@ -248,6 +248,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &239205758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239205762}
+  - component: {fileID: 239205761}
+  - component: {fileID: 239205760}
+  - component: {fileID: 239205759}
+  m_Layer: 0
+  m_Name: _CurvyGlobal_
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &239205759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239205758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62f98941b92097f49bd5ff480ec47122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Identifier: FluffyUnderware.Curvy.CurvySplineSegment, Assembly-CSharp-firstpass,
+    Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Settings:
+    m_Prewarm: 1
+    m_AutoCreate: 1
+    m_AutoEnableDisable: 1
+    m_MinItems: 0
+    m_Threshold: 50
+    m_Speed: 1
+    Debug: 0
+--- !u!114 &239205760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239205758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7da6ae8fd39ffa439ccf96f0d3da992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &239205761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239205758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d8a3277e999b164d99f199328dc5d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AutoCreatePools: 1
+  m_DefaultSettings:
+    m_Prewarm: 0
+    m_AutoCreate: 1
+    m_AutoEnableDisable: 1
+    m_MinItems: 0
+    m_Threshold: 0
+    m_Speed: 1
+    Debug: 0
+--- !u!4 &239205762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239205758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &630005861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -397,6 +486,66 @@ Material:
     - _EmissionColorUI: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
+--- !u!1 &990004297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 990004299}
+  - component: {fileID: 990004298}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &990004298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990004297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 1
+  m_Appearance:
+    pathColor: {r: 0, g: 1, b: 0, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 0.2
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 0, y: 0, z: -5}
+    tangent: {x: 1, y: 0, z: 0}
+    roll: 0
+  - position: {x: 0, y: 0, z: 1.9827713}
+    tangent: {x: 0, y: 0, z: 0.807498}
+    roll: 0
+  - position: {x: 0, y: 0, z: 7.5473766}
+    tangent: {x: 0, y: 0, z: 0.807498}
+    roll: 0
+--- !u!4 &990004299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990004297}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.5854344, y: 3.4699385, z: 1.0961925}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1811363723499081478
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,6 +715,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4276844601083447729, guid: d6894874ecedf254c8f3c295889f05d9, type: 3}
+      propertyPath: xCurve.m_Curve.Array.data[0].inSlope
+      value: 0.1413716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276844601083447729, guid: d6894874ecedf254c8f3c295889f05d9, type: 3}
+      propertyPath: xCurve.m_Curve.Array.data[0].outSlope
+      value: 0.1413716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276844601083447729, guid: d6894874ecedf254c8f3c295889f05d9, type: 3}
+      propertyPath: xCurve.m_Curve.Array.data[0].outWeight
+      value: 0.14180481
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276844601083447729, guid: d6894874ecedf254c8f3c295889f05d9, type: 3}
+      propertyPath: yCurveEnd.m_Curve.Array.data[0].inSlope
+      value: 0.1574655
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276844601083447729, guid: d6894874ecedf254c8f3c295889f05d9, type: 3}
+      propertyPath: yCurveEnd.m_Curve.Array.data[1].inSlope
+      value: 0.24977393
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276844601083447729, guid: d6894874ecedf254c8f3c295889f05d9, type: 3}
+      propertyPath: yCurveEnd.m_Curve.Array.data[0].outSlope
+      value: 0.1574655
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276844601083447729, guid: d6894874ecedf254c8f3c295889f05d9, type: 3}
+      propertyPath: yCurveEnd.m_Curve.Array.data[1].inWeight
+      value: 0.053406905
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276844601083447729, guid: d6894874ecedf254c8f3c295889f05d9, type: 3}
+      propertyPath: yCurveEnd.m_Curve.Array.data[0].outWeight
+      value: 0.084714554
+      objectReference: {fileID: 0}
     - target: {fileID: 4840379699099818454, guid: d6894874ecedf254c8f3c295889f05d9, type: 3}
       propertyPath: m_Name
       value: Player Carrier

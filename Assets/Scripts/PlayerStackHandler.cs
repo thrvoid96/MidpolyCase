@@ -11,7 +11,7 @@ public class PlayerStackHandler : MonoBehaviour
 {
     private TransformAccessArray accessArray;
     [SerializeField] private AnimationCurve xCurve, yCurveEnd, yCurveStart;
-    private static NativeArray<Keyframe> xCurveKeys,curve1Keys,curve2Keys;
+    private static NativeArray<Keyframe> xCurveKeys,yCurveStartKeys,yCurveEndKeys;
     private List<Transform> moneyList = new ();
     [field: SerializeField] public int CurrentCashCount { get; private set; }
     
@@ -23,19 +23,19 @@ public class PlayerStackHandler : MonoBehaviour
         {
             float t = InputFactor * i / ArrayLength;
             transform.localPosition = new Vector3(xCurveKeys[i].value * InputFactor * AmountCalculation, 
-                Mathf.Lerp(curve1Keys[i].value, curve2Keys[i].value, Mathf.Abs(t)) * AmountCalculation, transform.localPosition.z);
-            transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,t * -100f) * AmountCalculation);
+                Mathf.Lerp(yCurveStartKeys[i].value, yCurveEndKeys[i].value, Mathf.Abs(t)), transform.localPosition.z);
+            transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,t * -75f) * AmountCalculation);
         }
     }
     
     public void UpdateStackPositions(float input)
     {
         accessArray = new TransformAccessArray(moneyList.ToArray());
-        
+
         var job = new UpdateJob
         {
             ArrayLength = moneyList.Count,
-            AmountCalculation =  Mathf.Clamp(1f - (0.01f * CurrentCashCount),0.1f,1f),
+            AmountCalculation =  Mathf.Clamp(1f - (0.02f * CurrentCashCount),0.1f,1f),
             InputFactor = input
         };
             
@@ -47,15 +47,15 @@ public class PlayerStackHandler : MonoBehaviour
     
     private void OnDestroy()
     {
-        curve1Keys.Dispose();
-        curve2Keys.Dispose();
+        yCurveStartKeys.Dispose();
+        yCurveEndKeys.Dispose();
     }
 
     private void Awake()
     {
-        var xKeyFramesLength = 20;
-        var yStartKeyFramesLength = 20;
-        var yEndKeyFramesLength = 20;
+        var xKeyFramesLength = 100;
+        var yStartKeyFramesLength = 100;
+        var yEndKeyFramesLength = 100;
         
         var xKeyFrames = new Keyframe[xKeyFramesLength];
         var yStartKeyFrames = new Keyframe[yStartKeyFramesLength];
@@ -94,8 +94,8 @@ public class PlayerStackHandler : MonoBehaviour
             yEndKeyFrames[i] = yEndKeyFrame;
         }
         
-        curve1Keys = new NativeArray<Keyframe>(yStartKeyFrames, Allocator.Persistent);
-        curve2Keys = new NativeArray<Keyframe>(yEndKeyFrames, Allocator.Persistent);
+        yCurveStartKeys = new NativeArray<Keyframe>(yStartKeyFrames, Allocator.Persistent);
+        yCurveEndKeys = new NativeArray<Keyframe>(yEndKeyFrames, Allocator.Persistent);
         xCurveKeys = new NativeArray<Keyframe>(xKeyFrames, Allocator.Persistent);
     }
     
@@ -107,10 +107,21 @@ public class PlayerStackHandler : MonoBehaviour
         var trans = transform;
 
         var newEmptyObject = ObjectPool.Instance.SpawnFromPool(PoolEnums.EmptyObject, trans.position, Quaternion.identity, trans);
-        moneyList.Add(newEmptyObject.transform);
-        moneyList[startIndex].localScale = Vector3.one;
+        var newObjectTrans = newEmptyObject.transform;
+        newObjectTrans.localPosition = Vector3.zero;
 
-        collectableTrans.SetParent(moneyList[startIndex]);
+        if (moneyList.Count < 100)
+        {
+            moneyList.Add(newObjectTrans);
+        }
+        else
+        {
+            startIndex = 99;
+            newObjectTrans.SetParent(moneyList[startIndex]);
+        }
+        
+        newObjectTrans.localScale = Vector3.one;
+        collectableTrans.SetParent(newEmptyObject.transform);
         collectableTrans.localRotation = Quaternion.Euler(Vector3.zero);
         
         collectableTrans.DOLocalMove(Vector3.zero, 0.5f);
@@ -125,7 +136,15 @@ public class PlayerStackHandler : MonoBehaviour
         }
         
         CurrentCashCount -= 1;
+        if (CurrentCashCount > 100)
+        {
+            var lastMoney = moneyList[99].GetChild(0);
+            lastMoney.SetParent(null);
+            return lastMoney.gameObject;
+        }
+        
         var startIndex = CurrentCashCount;
+        moneyList[startIndex].SetParent(null);
         return moneyList[startIndex].gameObject;
     }
     
