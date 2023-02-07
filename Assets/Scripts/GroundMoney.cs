@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class GroundMoney : Collectable
 {
-    [SerializeField] private Animator _animator;
+    [SerializeField] private Animator animator;
     [SerializeField] private ParticleSystem particlesys;
+    [SerializeField] private Collider collider;
     protected override void Awake()
     {
         base.Awake();
-        _animator.SetTrigger(AnimatorHashes.DoIdle);
+        animator.SetTrigger(AnimatorHashes.DoIdle);
     }
 
     public override void Collect()
     {
         base.Collect();
         particlesys.Play();
-        _animator.SetTrigger(AnimatorHashes.StopIdle);
+        collider.enabled = false;
+        animator.SetTrigger(AnimatorHashes.StopIdle);
     }
 }

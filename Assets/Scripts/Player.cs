@@ -75,7 +75,7 @@ public class Player : Singleton<Player>
     {
         if (other.TryGetComponent<ICollectable>(out var collectable))
         {
-            PlayerStackHandler.CollectMoney(collectable,true);
+            PlayerStackHandler.CollectMoney(collectable);
         }
         else if(other.TryGetComponent<BetArea>(out var betArea))
         {

@@ -164,8 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2db55e176fec749b77b9093db565a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 3724079443560159756}
+  animator: {fileID: 3724079443560159756}
   particlesys: {fileID: 3459948823151807760}
+  collider: {fileID: 8498594458192679910}
 --- !u!1 &2683079268791873379
 GameObject:
   m_ObjectHideFlags: 0
