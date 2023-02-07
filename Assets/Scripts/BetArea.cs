@@ -23,8 +23,8 @@ public class BetArea : MonoBehaviour
         belts[1].SetText(rightBeltAnswer);
         questionBoxText.text = questionToAsk;
         multiplierText.text = "BETTING ODDS <size=150%> x" + Multiplier;
-        belts[0].SetMat(correctBelt == belts[0].beltType);
-        belts[1].SetMat(correctBelt == belts[1].beltType);
+        belts[0].SetMat(correctBelt == belts[0].BeltType);
+        belts[1].SetMat(correctBelt == belts[1].BeltType);
     }
 #endif
     

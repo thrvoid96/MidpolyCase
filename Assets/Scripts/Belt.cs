@@ -11,9 +11,9 @@ public class Belt : MonoBehaviour
     [SerializeField] private MeshRenderer triangle;
     [SerializeField] private Transform beltCashParent;
     [SerializeField] private ParticleSystem particleToPlay;
+    [field: SerializeField] public Transform MoneyEnterance{ get; private set; }
     [field: SerializeField] public GameObject QuestionObject { get; private set; }
-    public Transform moneyEnterance;
-    public BeltType beltType;
+    [field: SerializeField] public BeltType BeltType { get; private set; }
 
     private List<GameObject> moneyObjects = new();
     private int currentIndex;

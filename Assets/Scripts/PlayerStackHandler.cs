@@ -24,7 +24,7 @@ public class PlayerStackHandler : MonoBehaviour
             float t = InputFactor * i / ArrayLength;
             transform.localPosition = new Vector3(xCurveKeys[i].value * InputFactor * AmountCalculation, 
                 Mathf.Lerp(yCurveStartKeys[i].value, yCurveEndKeys[i].value, Mathf.Abs(t)), transform.localPosition.z);
-            transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,t * -75f) * AmountCalculation);
+            transform.localRotation = Quaternion.Euler(new Vector3(0f,0f,t * -90f) * AmountCalculation);
         }
     }
     
@@ -35,7 +35,7 @@ public class PlayerStackHandler : MonoBehaviour
         var job = new UpdateJob
         {
             ArrayLength = moneyList.Count,
-            AmountCalculation =  Mathf.Clamp(1f - (0.02f * CurrentCashCount),0.1f,1f),
+            AmountCalculation =  Mathf.Clamp(0.8f - (0.01f * CurrentCashCount),0.1f,1f),
             InputFactor = input
         };
             
@@ -139,13 +139,24 @@ public class PlayerStackHandler : MonoBehaviour
         if (CurrentCashCount > 100)
         {
             var lastMoney = moneyList[99].GetChild(0);
-            lastMoney.SetParent(null);
             return lastMoney.gameObject;
         }
         
         var startIndex = CurrentCashCount;
         moneyList[startIndex].SetParent(null);
         return moneyList[startIndex].gameObject;
+    }
+
+    public int RemoveUntilValue(int value)
+    {
+        if (CurrentCashCount > value)
+        {
+            var lastCount = CurrentCashCount;
+            CurrentCashCount = value + 1;
+            return lastCount - CurrentCashCount;
+        }
+
+        return 0;
     }
     
     public void PutMoneyOnBelt(Belt beltToPut)
@@ -169,8 +180,8 @@ public class PlayerStackHandler : MonoBehaviour
         newObj.transform.DOLocalRotate(Vector3.zero, 0.1f).SetEase(Ease.Linear);
         newObj.transform.DOLocalMove(new Vector3(0f, -0.2f, newObj.transform.localPosition.z), 0.1f).OnComplete(() =>
         {
-            var distance = Vector3.Distance(beltToPut.moneyEnterance.transform.position, newObj.transform.position);
-            newObj.transform.DOMove(beltToPut.moneyEnterance.transform.position, distance * 0.03f).OnComplete(() =>
+            var distance = Vector3.Distance(beltToPut.MoneyEnterance.transform.position, newObj.transform.position);
+            newObj.transform.DOMove(beltToPut.MoneyEnterance.transform.position, distance * 0.03f).OnComplete(() =>
             {
                 beltToPut.AddBetOnBelt();
                 newObj.SetActive(false);

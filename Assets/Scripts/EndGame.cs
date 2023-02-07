@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using DG.Tweening;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class EndGame : MonoBehaviour
 {
@@ -40,6 +42,9 @@ public class EndGame : MonoBehaviour
         cameraTrans.DOLocalMove(cameraStartPos.localPosition, cameraStartAnimDur);
         cameraTrans.DOLocalRotate(cameraEndPos.localRotation.eulerAngles, cameraStartAnimDur).OnComplete(() =>
         {
+            // Can do something with the removed amount
+            var removedAmount = Player.Instance.PlayerStackHandler.RemoveUntilValue(finalHeight);
+            
             nextMoneyPos = moneyStartPos.position;
             moneyPopTwn = DOVirtual.DelayedCall(moneyPopDur, PutMoneyOnEnd).SetLoops(-1, LoopType.Restart);
             cameraTrans.DOLocalMove(cameraEndPos.localPosition, cameraEndAnimDur).OnComplete(() =>
@@ -69,20 +74,24 @@ public class EndGame : MonoBehaviour
             cameraMoveTrans?.Kill();
             LevelManager.Instance.gameWon.Invoke();
         }
-
+        
         if (totalPlacedMoneyCount < finalHeight)
         {
             nextMoneyPos += new Vector3(0f, nextMoneyPosY, 0f);
             nextMoneyPosX *= -1f;
             nextMoneyPos.x = nextMoneyPosX;
         }
+
+        var nextMoneyTrans = nextMoney.transform;
+        nextMoneyTrans.SetParent(null);
         
-        nextMoney.transform.localScale = Vector3.one * 2f;
-        nextMoney.transform.DOLocalMove(nextMoneyPos, moneyPopDur).OnComplete(() =>
+        nextMoneyTrans.localScale = Vector3.one * 2f;
+        nextMoneyTrans.GetChild(0).localScale = Vector3.one * 0.5f;
+        nextMoneyTrans.DOLocalMove(nextMoneyPos, moneyPopDur).OnComplete(() =>
         {
             totalPlacedMoneyCount++;
             
-            if (totalPlacedMoneyCount < finalHeight)
+            if (totalPlacedMoneyCount <= finalHeight)
             {
                 if (totalPlacedMoneyCount % sectionHeight == 0)
                 {

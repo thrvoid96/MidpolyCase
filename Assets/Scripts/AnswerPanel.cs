@@ -29,15 +29,15 @@ public class AnswerPanel : Singleton<AnswerPanel>
         
         if (correctGuess)
         {
-            CalculateAnimation(rightText,text,rightAnswer,rightMultip, correctGuess);
+            CalculateAnimation(rightText,text,rightAnswer,rightMultip, startPosRight, correctGuess);
         }
         else
         {
-            CalculateAnimation(wrongText,text,wrongAnswer,wrongMultip, correctGuess);
+            CalculateAnimation(wrongText,text,wrongAnswer,wrongMultip, startPosWrong, correctGuess);
         }
     }
 
-    private void CalculateAnimation(TextMeshProUGUI textToChange, string textToSet, RectTransform answerToScale, CanvasGroup alphaToChange, bool correctGuess)
+    private void CalculateAnimation(TextMeshProUGUI textToChange, string textToSet, RectTransform answerToScale, CanvasGroup alphaToChange, Vector3 startPos, bool correctGuess)
     {
         textToChange.text = textToSet;
 
@@ -55,7 +55,7 @@ public class AnswerPanel : Singleton<AnswerPanel>
                 alphaToChange.alpha = alpha;
             });
 
-            alphaToChange.transform.position = startPosRight;
+            alphaToChange.transform.position = startPos;
             alphaToChange.transform.DOMove(multipEndPos.position, 1f).OnComplete(() =>
             {
                 answerToScale.DOScale(Vector3.zero, 0.5f);

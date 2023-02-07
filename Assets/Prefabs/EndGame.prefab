@@ -5840,7 +5840,7 @@ GameObject:
   - component: {fileID: 296486289460597402}
   - component: {fileID: 3099586364479029868}
   m_Layer: 0
-  m_Name: End_Game
+  m_Name: EndGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

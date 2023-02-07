@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class LevelManager : Singleton<LevelManager>
 {
     [NonSerialized] public LevelAssetCreate levelAsset;
-
+    [SerializeField] private bool setLevel;
+    [SerializeField] private int levelToSet;
     GameObject particlePool;
     
     public Action gameStart,gameWon,gameLost;
@@ -29,6 +30,10 @@ public class LevelManager : Singleton<LevelManager>
     void SetValues()
     {
         levelAsset = Resources.Load<LevelAssetCreate>("Scriptables/LevelAsset");
+        if (setLevel)
+        {
+            GameManager.Level = levelToSet;
+        }
         CreateLevel();
     }
     
